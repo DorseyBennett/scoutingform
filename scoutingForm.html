@@ -1,25 +1,43 @@
-<html xmlns='http://www.w3.org/1999/xhtml'>
+<html>
    <head >
-      <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+      <meta/>
       <title >Form Page: ScoutingForm</title>
    </head>
 <body>
 <h1>2485 FRC Stronghold Scouting Form</h1>
- 
-<form id='ScoutingForm' method='post' action='' >
-   <p>
-  <font size="4"> Team Number: </font> <input type='text' required name='TeamNumber' />
-   </p>
-   <p>
-   <font size="4"> Match Number: </font> <input type='text' required name='MatchNumber'/>
-   </p>
-   <p>
-   <input type='number' name='Submit' value='Submit' />
-   </p>
-   <p>
-      <font size="4"> Comments: </font> <br/>
-      <textarea name="comments" rows="10" cols="100">  </textarea>  
+<form>
+<hr/>
+<h2>PreMatch</h2>
+
+   <font size="4"/> Team Number <input type="number" min="0" max="10000" value="dumbass">
+   Match Number <input type="number" min"0" max"200" value"dumbass" size="5">
+   <hr/>
+
+
+<h2>Auto</h2>
+
+   Reached a defense <input type="checkbox" value"1"> <br/>
+   Crossed a defense <input type="checkbox" value"1"> <br/>
+   Which one <select>
+               <option value="portcullis"> Portcullis </option>
+               <option value="cheval de Frise"> Cheval de Frise </option>
+               <option value="ramparts"> Ramparts </option>
+               <option value="moat"> Moat </option>
+               <option value="rockwall"> Rock Wall </option>
+               <option value="rough terrain"> Rough Terrain </option>
+               <option value="drawbridge"> Drawbridge </option>
+               <option value="sallyport"> Sallyport </option>
+</select> <br/>
+   Shot High Goal <input type="checkbox" value="1"> <br/>
+   Shot low Goal  <input type="checkbox" value="1"> <br/> 
+   <hr/>
+
+
+   <h2>Teleop</h2>
+      <h3>Defenses</h3>
+         <h4>Category A</h4>
+            how many times did they Cross <input type="number" min="0" max="4"> <br/>
+            
 </form>
- 
 </body>
 </html>
