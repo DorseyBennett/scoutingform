@@ -1,47 +1,153 @@
 <html>
-   <head >
-      <title >Form Page: ScoutingForm</title>
-   </head>
+
+<head>
+   <title>Form Page: ScoutingForm</title>
+</head>
+
 <body>
-<h1>2485 FRC Stronghold Scouting Form</h1>
-<form>
-<hr/>
-<h2>PreMatch</h2>
+   <h1>2485 FRC Stronghold Scouting Form</h1>
+   <form>
+      <hr/>
+      <h2>PreMatch</h2>
 
-   <font size="4"/> Team Number <input type="number" min="0" max="10000" value="dumbass">
-   Match Number <input type="number" min"0" max"200" value"dumbass" size="5">
-   <hr/>
-
-
-<h2>Auto</h2>
-
-   Reached a defense <input type="checkbox" value"1"> <br/>
-   Crossed a defense <input type="checkbox" value"1"> <br/>
-   Which one <select>
-               <option value="portcullis"> Portcullis </option>
-               <option value="cheval de Frise"> Cheval de Frise </option>
-               <option value="ramparts"> Ramparts </option>
-               <option value="moat"> Moat </option>
-               <option value="rockwall"> Rock Wall </option>
-               <option value="rough terrain"> Rough Terrain </option>
-               <option value="drawbridge"> Drawbridge </option>
-               <option value="sallyport"> Sallyport </option>
-</select> <br/>
-   Shot High Goal <input type="checkbox" value="1"> <br/>
-   Shot low Goal  <input type="checkbox" value="1"> <br/> 
-   <hr/>
+      <font size="4" /> Team Number
+      <input type="number" min="0" max="10000" value="dumbass"> Match Number
+      <input type="number" min "0" max "200" value "dumbass" size="5">
+      <hr/>
 
 
-   <h2>Teleop</h2>
+      <h2>Auto</h2> Reached a defense
+      <input type="checkbox" value "1">
+      <br/> Crossed a defense
+      <input type="checkbox" value "1">
+      <br/> Which one
+      <select>
+         <option value="portcullis"> Portcullis </option>
+         <option value="cheval de Frise"> Cheval de Frise </option>
+         <option value="ramparts"> Ramparts </option>
+         <option value="moat"> Moat </option>
+         <option value="rockwall"> Rock Wall </option>
+         <option value="rough terrain"> Rough Terrain </option>
+         <option value="drawbridge"> Drawbridge </option>
+         <option value="sallyport"> Sallyport </option>
+      </select>
+      <br/> Shot High Goal
+      <input type="checkbox" value="1">
+      <br/> Shot low Goal
+      <input type="checkbox" value="1">
+      <br/>
+      <hr/>
+
+
+      <h2>Teleop</h2>
       <h3>Defenses</h3>
-         <h4>Category A</h4>
-            how many times did they Cross <input type="number" min="0" max="4"> <br/>
-            which defense is up: <select>
-                                    <option value="Portcullis"> Portcullis </option>
-                                    <option value="Cheval de Frise"> CTF </option>
-                                 </select>  <br/>
+      <h4>Category A</h4> how many times did they Cross
+      <input type="number" min="0" max="4">
+      <br/> which defense is up:
+      <select>
+         <option value="Portcullis"> Portcullis </option>
+         <option value="Cheval de Frise"> CTF </option>
+      </select>
+      <br/> How Fast
+      <select>
+         <option value="Snail"> Snail </option>
+         <option value="Slow"> Slow </option>
+         <option value="Average"> Average </option>
+         <option value="Fast"> Fast </option>
+         <option value="Lightning"> Lightning </option>
+      </select>
+      <hr/>
+
+      <h4>Category B</h4> how many times did they Cross
+      <input type="number" min="0" max="4">
+      <br/> which defense is up:
+      <select>
+         <option value="Ramparts"> Ramparts </option>
+         <option value="Moat"> Moat </option>
+      </select>
+      <br/> How Fast
+      <select>
+         <option value="Snail"> Snail </option>
+         <option value="Slow"> Slow </option>
+         <option value="Average"> Average </option>
+         <option value="Fast"> Fast </option>
+         <option value="Lightning"> Lightning </option>
+      </select>
+      <hr/>
+      <h4>Category C</h4> how many times did they Cross
+      <input type="number" min="0" max="4">
+      <br/> which defense is up:
+      <select>
+         <option value="Sallyport"> Sallyport </option>
+         <option value="Drawbridge"> Drawbridge </option>
+      </select>
+      <br/> How Fast
+      <select>
+         <option value="Snail"> Snail </option>
+         <option value="Slow"> Slow </option>
+         <option value="Average"> Average </option>
+         <option value="Fast"> Fast </option>
+         <option value="Lightning"> Lightning </option>
+      </select>
+      <hr/>
+      <h4>Category D</h4> how many times did they Cross
+      <input type="number" min="0" max="4">
+      <br/> which defense is up:
+      <select>
+         <option value="RT"> Rough Terrain </option>
+         <option value="Rockwall"> Rockwall </option>
+      </select>
+      <br/> How Fast
+      <select>
+         <option value="Snail"> Snail </option>
+         <option value="Slow"> Slow </option>
+         <option value="Average"> Average </option>
+         <option value="Fast"> Fast </option>
+         <option value="Lightning"> Lightning </option>
+      </select>
+      <hr/>
+      <h4>Low Bar</h4> how many times did they Cross
+      <input type="number" min="0" max="4">
+      <br/> How Fast
+      <select>
+         <option value="Snail"> Snail </option>
+         <option value="Slow"> Slow </option>
+         <option value="Average"> Average </option>
+         <option value="Fast"> Fast </option>
+         <option value="Lightning"> Lightning </option>
+      </select>
+      <hr/>
+      <h4>Shooting</h4> how many times did they Cross
+      <input type="number" min="0" max="4">
+      <br/> which goal did they attempt
+      <select>
+         <option value="High Shot"> High Shot </option>
+         <option value="Low Shot"> Low Shot </option>
+         <option value="both"> Both </option>
+      </select>
+      <br/> How many High Goals
+      <input type="number" value="highgoal">
+      <br/> How many Low Goals
+      <input type="number" value="lowgoal">
+      <hr/>
+      <h2>End Game</h2>
+      <input type="radio" name="capture"> Scale
+      <input type="radio" name="capture"> Challenge
+      <input type="radio" name="capture"> neither
+      <hr/>
+      <h2>Post Match</h2>
+         Comments <br/>
+         <h6> Ratings </h6> Speed <br/>
+         <input type="radio" name="speed"> Snail
+         <input type="radio" name="speed"> Slow
+         <input type="radio" name="speed"> Average
+         <input type="radio" name="speed"> Fast
+         <input type="radio" name="speed"> Lightning
 
 
-</form>
+
+
+   </form>
 </body>
+
 </html>
