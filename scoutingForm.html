@@ -6,22 +6,22 @@
 
 <body>
    <h1>2485 FRC Stronghold Scouting Form</h1>
-   <form>
+   <!--This links to a google script named "Post" in the scouting folder-->
+   <form action="https://script.google.com/a/macros/francisparker.org/s/AKfycbwSB9g43MbQsRBKZSc-eG2aypRS9gAPedZXX1t5qQhyU7vjJYU/exec" method="POST" id="ss-form" target="_self" onsubmit="">
       <hr/>
       <h2>PreMatch</h2>
 
-      <font size="4" /> Team Number
-      <input type="number" min="0" max="10000" value="dumbass"> Match Number
-      <input type="number" min "0" max "200" value "dumbass" size="5">
+      <font size="4" /> Team Number 
+      <input type="number" min="0" max="10000" value="newb" name = "TeamNumber">
+      <br>Match Number 
+      <input type="number" min="0" max="200" value="newb" size="5" name = "MatchNumber">
       <hr/>
-
-
       <h2>Auto</h2> Reached a defense
-      <input type="checkbox" value "1">
+      <input type="checkbox" value "1" name = "ReachedAuto">
       <br/> Crossed a defense
-      <input type="checkbox" value "1">
+      <input type="checkbox" value "1" name = "CrossedAuto">
       <br/> Which one
-      <select>
+      <select name = "AutoDefense">
          <option value="portcullis"> Portcullis </option>
          <option value="cheval de Frise"> Cheval de Frise </option>
          <option value="ramparts"> Ramparts </option>
@@ -31,25 +31,24 @@
          <option value="drawbridge"> Drawbridge </option>
          <option value="sallyport"> Sallyport </option>
       </select>
-      <br/> Shot High Goal
-      <input type="checkbox" value="1">
+      <br/> Shot high Goal
+      <input type="checkbox" value="1" name="HighGoalAuto">
       <br/> Shot low Goal
-      <input type="checkbox" value="1">
+      <input type="checkbox" value="1" name="LowGoalAuto">
       <br/>
       <hr/>
-
-
       <h2>Teleop</h2>
       <h3>Defenses</h3>
-      <h4>Category A</h4> how many times did they Cross
-      <input type="number" min="0" max="4">
-      <br/> which defense is up:
-      <select>
+      <h4>Category A</h4>
+      which defense is up:
+      <select name = "DefenseA">
          <option value="Portcullis"> Portcullis </option>
-         <option value="Cheval de Frise"> CTF </option>
+         <option value="Cheval de Frise"> Cheval de Frise </option>
       </select>
+      <br>how many times did they Cross
+      <input type="number" min="0" max="4" name = "CrossA">
       <br/> How Fast
-      <select>
+      <select name = "SpeedA">
          <option value="Snail"> Snail </option>
          <option value="Slow"> Slow </option>
          <option value="Average"> Average </option>
@@ -57,16 +56,16 @@
          <option value="Lightning"> Lightning </option>
       </select>
       <hr/>
-
-      <h4>Category B</h4> how many times did they Cross
-      <input type="number" min="0" max="4">
-      <br/> which defense is up:
-      <select>
+      <h4>Category B</h4> 
+      which defense is up:
+      <select name = "DefenseB">
          <option value="Ramparts"> Ramparts </option>
          <option value="Moat"> Moat </option>
       </select>
+      <br>how many times did they Cross
+      <input type="number" min="0" max="4" bane = "CrossB">
       <br/> How Fast
-      <select>
+      <select name = "SpeedB">
          <option value="Snail"> Snail </option>
          <option value="Slow"> Slow </option>
          <option value="Average"> Average </option>
@@ -74,15 +73,16 @@
          <option value="Lightning"> Lightning </option>
       </select>
       <hr/>
-      <h4>Category C</h4> how many times did they Cross
-      <input type="number" min="0" max="4">
-      <br/> which defense is up:
-      <select>
+      <h4>Category C</h4>
+      Which defense is up:
+      <select name = "DefenseC">
          <option value="Sallyport"> Sallyport </option>
          <option value="Drawbridge"> Drawbridge </option>
       </select>
+      <br>How many times did they cross
+      <input type="number" min="0" max="4" name = "CrossC">
       <br/> How Fast
-      <select>
+      <select name = "SpeedC">
          <option value="Snail"> Snail </option>
          <option value="Slow"> Slow </option>
          <option value="Average"> Average </option>
@@ -90,15 +90,16 @@
          <option value="Lightning"> Lightning </option>
       </select>
       <hr/>
-      <h4>Category D</h4> how many times did they Cross
-      <input type="number" min="0" max="4">
-      <br/> which defense is up:
-      <select>
+      <h4>Category D</h4> 
+      which defense is up:
+      <select name = "DefenseD">
          <option value="RT"> Rough Terrain </option>
          <option value="Rockwall"> Rockwall </option>
       </select>
+      <br>How many times did they cross
+      <input type="number" min="0" max="4" name = "CrossD">
       <br/> How Fast
-      <select>
+      <select name = "SpeedD">
          <option value="Snail"> Snail </option>
          <option value="Slow"> Slow </option>
          <option value="Average"> Average </option>
@@ -106,10 +107,11 @@
          <option value="Lightning"> Lightning </option>
       </select>
       <hr/>
-      <h4>Low Bar</h4> how many times did they Cross
-      <input type="number" min="0" max="4">
+      <h4>Low Bar</h4> 
+      How many times did they cross
+      <input type="number" min="0" max="4" name = "CrossE">
       <br/> How Fast
-      <select>
+      <select name = "SpeedE">
          <option value="Snail"> Snail </option>
          <option value="Slow"> Slow </option>
          <option value="Average"> Average </option>
@@ -117,18 +119,17 @@
          <option value="Lightning"> Lightning </option>
       </select>
       <hr/>
-      <h4>Shooting</h4> how many times did they Cross
-      <input type="number" min="0" max="4">
-      <br/> which goal did they attempt
-      <select>
+      <h4>Shooting</h4>
+      which goal did they attempt 
+      <select name = "WhichGoal">
          <option value="High Shot"> High Shot </option>
          <option value="Low Shot"> Low Shot </option>
          <option value="both"> Both </option>
       </select>
       <br/> How many High Goals
-      <input type="number" value="highgoal">
+      <input type="number" value="highgoal" name = "HighGoal">
       <br/> How many Low Goals
-      <input type="number" value="lowgoal">
+      <input type="number" value="lowgoal" name = HighGoal>
       <hr/>
       <h2>End Game</h2>
       <input type="radio" name="capture"> Scale
@@ -136,14 +137,17 @@
       <input type="radio" name="capture"> neither
       <hr/>
       <h2>Post Match</h2>
-         Comments <br/>
-         <h6> Ratings </h6> Speed <br/>
-         <input type="radio" name="speed"> Snail
-         <input type="radio" name="speed"> Slow
-         <input type="radio" name="speed"> Average
-         <input type="radio" name="speed"> Fast
-         <input type="radio" name="speed"> Lightning
-
+      Comments <br/>
+      <textarea name = "Comments" rows = "6" cols = 40>
+      </textarea>
+      <h4> Ratings </h4> Speed <br/>
+      <input type="radio" name="speed"> Snail
+      <input type="radio" name="speed"> Slow
+      <input type="radio" name="speed"> Average
+      <input type="radio" name="speed"> Fast
+      <input type="radio" name="speed"> Lightning
+      
+      <br><hr><br><input type="submit" value="Submit">
 
 
 
