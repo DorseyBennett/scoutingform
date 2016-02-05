@@ -1,112 +1,204 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Team 2485 | Scouting Form</title>
 
-    <!-- Path to Framework7 Library CSS-->
-    <link rel="stylesheet" href="css/framework7.ios.min.css">
-    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+   <meta name="apple-mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+   <title>Team 2485 | Scouting Form</title>
 
-    <!-- Path to your custom app styles-->
-    <link rel="stylesheet" href="css/my-app.css">
-  </head>
-  <body>
+   <!-- Path to Framework7 Library CSS-->
+   <link rel="stylesheet" href="css/framework7.ios.min.css">
+   <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+
+   <!-- Path to your custom app styles-->
+   <link rel="stylesheet" href="css/my-app.css">
+</head>
+
+<body>
 
 
 
-    <!-- Views-->
-    <div class="views">
+   <!-- Views-->
+   <div class="views">
       <!-- Your main view, should have "view-main" class-->
       <div class="view view-main">
-        <!-- Top Navbar-->
-        <div class="navbar">
-          <div class="navbar-inner">
-            <!-- We have home navbar without left link-->
-            <div class="center sliding">STRONGHOLD 2016 Scouting Form</div>
+         <!-- Top Navbar-->
+         <div class="navbar">
+            <div class="navbar-inner">
+               <!-- We have home navbar without left link-->
+               <div class="center sliding">STRONGHOLD 2016 Scouting Form</div>
 
-          </div>
-        </div>
-        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-        <div class="pages navbar-through toolbar-through">
-          <!-- Page, data-page contains page name-->
-          <div data-page="index" class="page">
-            <!-- Scrollable page content-->
-            <div class="page-content">
-              <div class="content-block-title">This is an imcomplete scouting form</div>
-              <div class="content-block">
-                <div class="content-block-inner">
-                  <p> Instructions on scouting </p>
-                </div>
-              </div>
+            </div>
+         </div>
+         <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+         <div class="pages navbar-through toolbar-through">
+            <!-- Page, data-page contains page name-->
+            <div data-page="index" class="page">
+               <!-- Scrollable page content-->
+               <div class="page-content">
+                  <div class="content-block-title">PRE MATCH</div>
 
-              <div class="list-block">
-              <!-- form start -->
-              <!-- PREMATCH -->
-
-              <form onsubmit="return sendToGoogleForm()">
-                <ul>
-                  <!-- Text inputs -->
-                  <li>
-                     <h4> PreMatch</h4>
-                    <div class="item-content">
-                      <div class="item-inner">
-                        <div class="item-title label">Team Number</div>
-                        <div class="item-input">
-                          <input type="number" placeholder="2485" id="name" name="name">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-inner">
-                        <div class="item-title label">Match Number</div>
-                        <div class="item-input">
-                          <input type="number" placeholder="7" id="color" name="color" min="0">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                  </div>
                   <div class="list-block">
-                  <!-- run sendToGoogleForm on form submit -->
-                    <input type="submit" value="Submit" class="button button-big button-green" min="0">
-                  </li>
-                </ul>
-              </form>
-          </div>
-        <!-- Bottom Toolbar-->
+                     <!-- form start -->
+                     <!-- PREMATCH -->
 
-      </div>
-    </div>
-    <!-- Path to Framework7 Library JS-->
-    <script type="text/javascript" src="js/framework7.min.js"></script>
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="js/my-app.js"></script>
-  </body>
-  <script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
-  <script type="text/javascript">
-  function sendToGoogleForm() {
+                     <form onsubmit="return sendToGoogleForm()">
+                        <ul>
+                           <!-- Text inputs -->
+                           <li>
+                              <div class="item-content">
+                                 <div class="item-inner">
+                                    <div class="item-title label">Team Number</div>
+                                    <div class="item-input">
+                                       <input type="number" placeholder="e.g. 2485" id="name" name="name" min="1">
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="item-content">
+                                 <div class="item-inner">
+                                    <div class="item-title label">Match Number</div>
+                                    <div class="item-input">
+                                       <input type="number" placeholder="e.g. 7" id="color" name="color" min="0">
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
 
-    //get values of form elements by their id with jquery
-    var name = $('#name').val();
-    var color = $('#color').val();
+                           <!-- AUTO -->
+                           <h4>Auto</h4>
+                           <!-- DEFENSES -->
+                           <li>
+                              <label class="label-checkbox item-content">
+                                 <input type="checkbox" name="autodef" value="reach">
+                                 <div class="item-media">
+                                    <i class="icon icon-form-checkbox"></i>
+                                 </div>
+                                 <div class="item-inner">
+                                    <div class="item-title">Reach a Defense</div>
+                                 </div>
+                              </label>
+                           </li>
 
-    //POST form data to Google form with ajax
-    $.ajax({
-      url: "https://docs.google.com/a/francisparker.org/forms/d/1JVez5ms9mGhhYTlkXBgX2zOfWVK4wVG1znK6ZAFXohI/formResponse",
-      //use names of <input> elements from google form source
-      data: {"entry.471564288" : name,
-             "entry.216346827" : color},
-      type: "POST",
-      dataType: "xml"
-    });
+                           <li>
+                              <label class="label-checkbox item-content">
+                                 <input type="checkbox" name="autodef" value="CROSS">
+                                 <div class="item-media">
+                                    <i class="icon icon-form-checkbox"></i>
+                                 </div>
+                                 <div class="item-inner">
+                                    <div class="item-title">Cross a defense</div>
+                                 </div>
+                              </label>
+                           </li>
+                           <!-- Shooting -->
+                           <li>
+                              <label class="label-checkbox item-content">
+                                 <input type="checkbox" name="autoshot" value="high">
+                                 <div class="item-media">
+                                    <i class="icon icon-form-checkbox"></i>
+                                 </div>
+                                 <div class="item-inner">
+                                    <div class="item-title">High Shot</div>
+                                 </div>
+                              </label>
+                           </li>
 
-  }
-  </script>
+                           <li>
+                              <label class="label-checkbox item-content">
+                                 <input type="checkbox" name="autoshot" value="low">
+                                 <div class="item-media">
+                                    <i class="icon icon-form-checkbox"></i>
+                                 </div>
+                                 <div class="item-inner">
+                                    <div class="item-title">Low Shot</div>
+                                 </div>
+                              </label>
+                           </li>
+                           <!-- TELEOP -->
+                           <li>
+                              <h4>Teleop</h4>
+                           </li>
+                           <!-- DEFENSES -->
+                           <h5> Category A</h5>
+                              <li>
+                                 <label class="label-radio item-content">
+                                    <input type="radio" name="Catadef" value="Portcullis" checked="checked">
+                                    <div class="item-inner">
+                                       <div class="item-title">Portcullis</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <label class="label-radio item-content">
+                                    <input type="radio" name="Catadef" value="Sallyport">
+                                    <div class="item-inner">
+                                       <div class="item-title">Sallyport</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Num CROSSES</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="e.g. 2" id="NumCrossA" name="NumCrossA" min="0">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="FailA" value="FA">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title">Failed to CROSS</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <!-- run sendToGoogleForm on form submit -->
+                              <li>
+                                 <input type="submit" value="Submit" class="button button-big button-green" min="0">
+                              </li>
+                  </div>
+
+                  </ul>
+                  </form>
+                  <!-- Bottom Toolbar-->
+
+               </div>
+            </div>
+            <!-- Path to Framework7 Library JS-->
+            <script type="text/javascript" src="js/framework7.min.js"></script>
+            <!-- Path to your app js-->
+            <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+<script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">
+   function sendToGoogleForm() {
+
+      //get values of form elements by their id with jquery
+      var name = $('#name').val();
+      var color = $('#color').val();
+
+      //POST form data to Google form with ajax
+      $.ajax({
+         url: "https://docs.google.com/a/francisparker.org/forms/d/1JVez5ms9mGhhYTlkXBgX2zOfWVK4wVG1znK6ZAFXohI/formResponse",
+         //use names of <input> elements from google form source
+         data: {
+            "entry.471564288": name,
+            "entry.216346827": color
+         },
+         type: "POST",
+         dataType: "xml"
+      });
+
+   }
+</script>
+
 </html>
