@@ -1,4 +1,4 @@
-# Testing (by Krame)
+# Testing (by BEND)
 
 Proof-of-concept of a simple form with Framework7 using Troy's form hack.
 
