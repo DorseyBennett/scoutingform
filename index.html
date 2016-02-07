@@ -38,13 +38,13 @@
             <div data-page="index" class="page">
                <!-- Scrollable page content-->
                <div class="page-content">
-                  <div class="content-block-title">PRE MATCH</div>
+                  <form action="https://script.google.com/a/macros/francisparker.org/s/AKfycbwSB9g43MbQsRBKZSc-eG2aypRS9gAPedZXX1t5qQhyU7vjJYU/exec" method="POST" id="ss-form" target="_self" onsubmit="">
 
-                  <div class="list-block">
-                     <!-- form start -->
-                     <!-- PREMATCH -->
+                     <div class="content-block-title">PRE MATCH</div>
 
-                     <form action="https://script.google.com/a/macros/francisparker.org/s/AKfycbwSB9g43MbQsRBKZSc-eG2aypRS9gAPedZXX1t5qQhyU7vjJYU/exec" method="POST" id="ss-form" target="_self" onsubmit="">
+                     <div class="list-block">
+                        <!-- form start -->
+                        <!-- PREMATCH -->
                         <ul>
                            <!-- Text inputs -->
                            <li>
@@ -67,10 +67,13 @@
                                  </div>
                               </div>
                            </li>
+                        </ul>
+                     </div>
 
-                           <!-- AUTO -->
-                           <h4>Auto</h4>
-                           <!-- DEFENSES -->
+                     <div class="content-block-title">AUTO</div>
+                     <div class="list-block">
+                        <!-- DEFENSES -->
+                        <ul>
                            <li>
                               <label class="label-checkbox item-content">
                                  <input type="checkbox" name="AutoDef" value="reach">
@@ -106,7 +109,6 @@
                                  </div>
                               </label>
                            </li>
-
                            <li>
                               <label class="label-checkbox item-content">
                                  <input type="checkbox" name="AutoLow" value="low">
@@ -118,11 +120,17 @@
                                  </div>
                               </label>
                            </li>
+                        </ul>
+                     </div>
+                     <div class="content-block-title">TELEOP</div>
+                     <div class="list-block">
+                        <ul>
+
                            <!-- TELEOP -->
-                           <li>
-                              <h4>Teleop</h4>
-                           </li>
+
+
                            <!-- DEFENSES -->
+                           <br>
                            <h5> Category A</h5>
                            <li>
                               <label class="label-radio item-content">
@@ -163,13 +171,13 @@
                            </li>
                            <br/>
                            <li>
-                           <div class="item-input">
-                              <div class="item-title label">Speed (1-5)</div>
-                              <div class="range-slider">
-                                 <input type="range" name="SpeedA"min="1" max="5" step="1">
+                              <div class="item-input">
+                                 <div class="item-title label">Speed (1-5)</div>
+                                 <div class="range-slider">
+                                    <input type="range" name="SpeedA"min="1" max="5" step="1">
+                                 </div>
                               </div>
-                           </div>
-                        </li>
+                           </li>
                            <!-- CAT B -->
                            <h5> Category B</h5>
                            <li>
@@ -211,20 +219,20 @@
                            </li>
                            <br/>
                            <li>
-                           <div class="item-input">
-                              <div class="item-title label">Speed (1-5)</div>
-                              <div class="range-slider">
-                                 <input type="range" name="SpeedB"min="1" max="5" step="1">
+                              <div class="item-input">
+                                 <div class="item-title label">Speed (1-5)</div>
+                                 <div class="range-slider">
+                                    <input type="range" name="SpeedB"min="1" max="5" step="1">
+                                 </div>
                               </div>
-                           </div>
-                        </li>
+                           </li>
 
                            <h5> Category C</h5>
                            <li>
                               <label class="label-radio item-content">
                                  <input type="radio" name="DefC" value="SallyPort" checked="checked">
                                  <div class="item-inner">
-                                    <div class="item-title">SallyPort</div>
+                                    <div class="item-title">Sally Port</div>
                                  </div>
                               </label>
                            </li>
@@ -232,7 +240,7 @@
                               <label class="label-radio item-content">
                                  <input type="radio" name="DefC" value="DrawBridge">
                                  <div class="item-inner">
-                                    <div class="item-title">DrawBridge</div>
+                                    <div class="item-title">Drawbridge</div>
                                  </div>
                               </label>
                            </li>
@@ -259,13 +267,13 @@
                            </li>
                            <br/>
                            <li>
-                           <div class="item-input">
-                              <div class="item-title label">Speed (1-5)</div>
-                              <div class="range-slider">
-                                 <input type="range" name="SpeedC"min="1" max="5" step="1">
+                              <div class="item-input">
+                                 <div class="item-title label">Speed (1-5)</div>
+                                 <div class="range-slider">
+                                    <input type="range" name="SpeedC"min="1" max="5" step="1">
+                                 </div>
                               </div>
-                           </div>
-                        </li>
+                           </li>
 
                            <h5> Category D</h5>
                            <li>
@@ -307,13 +315,13 @@
                            </li>
                            <br/>
                            <li>
-                           <div class="item-input">
-                              <div class="item-title label">Speed (0-5)</div>
-                              <div class="range-slider">
-                                 <input type="range" name="SpeedD"min="0" max="5" step="1">
+                              <div class="item-input">
+                                 <div class="item-title label">Speed (1-5)</div>
+                                 <div class="range-slider">
+                                    <input type="range" name="SpeedD"min="1" max="5" step="1">
+                                 </div>
                               </div>
-                           </div>
-                        </li>
+                           </li>
 
                            <h5> Low Bar</h5>
                            <li>
@@ -339,32 +347,70 @@
                            </li>
                            <br/>
                            <li>
-                           <div class="item-input">
-                              <div class="item-title label">Speed (1-5)</div>
-                              <div class="range-slider">
-                                 <input type="range" name="SpeedE"min="1" max="5" step="1">
+                              <div class="item-input">
+                                 <div class="item-title label">Speed (1-5)</div>
+                                 <div class="range-slider">
+                                    <input type="range" name="SpeedE"min="1" max="5" step="1">
+                                 </div>
                               </div>
-                           </div>
-                        </li>
-                        <!-- END DEFENSE BEGIN SHOOTING -->
+                           </li>
+                        </ul>
+                     </div>
+                     <!-- END DEFENSE BEGIN SHOOTING -->
 
-
-                           <!-- run sendToGoogleForm on form submit -->
+                     <div class="content-block-title">MISCELLANEOUS</div>
+                     <div class="list-block">
+                        <ul>
+                           <!-- Text inputs -->
+                           <li>
+                              <div class="item-content">
+                                 <div class="item-inner">
+                                    <div class="item-title label">Comments</div>
+                                    <div class="item-input">
+                                       <textarea class = "resizable" name="Comments" placeholder="...">
+                                       </textarea>
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="item-content">
+                                 <div class="item-inner">
+                                    <div class="item-title label">Number of Fouls</div>
+                                    <div class="item-input">
+                                       <input type="number" placeholder="e.g. 3" name="NumFouls" min="0">
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="list-block">
+                        <!-- run sendToGoogleForm on form submit -->
+                        <ul>
                            <li>
                               <input type="submit" value="Submit" class="button button-big button-green" min="0">
                            </li>
+                        </ul>
+                     </div>
+
+
+
+
+                     <!-- Bottom Toolbar-->
+
                   </div>
-
-                  </ul>
-                  </form>
-                  <!-- Bottom Toolbar-->
-
                </div>
-            </div>
+            </form>
             <!-- Path to Framework7 Library JS-->
             <script type="text/javascript" src="js/framework7.min.js"></script>
             <!-- Path to your app js-->
             <script type="text/javascript" src="js/my-app.js"></script>
+         </div>
+      </div>
+   </div>
 </body>
 <script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
+
 </html>
+
