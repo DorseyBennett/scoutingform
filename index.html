@@ -44,7 +44,7 @@
                      <!-- form start -->
                      <!-- PREMATCH -->
 
-                     <form onsubmit="return sendToGoogleForm()">
+                     <form action="https://script.google.com/a/macros/francisparker.org/s/AKfycbwSB9g43MbQsRBKZSc-eG2aypRS9gAPedZXX1t5qQhyU7vjJYU/exec" method="POST" id="ss-form" target="_self" onsubmit="">
                         <ul>
                            <!-- Text inputs -->
                            <li>
@@ -52,7 +52,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Team Number</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2485" id="name" name="name" min="1">
+                                       <input type="number" placeholder="e.g. 2485" name="TeamNumber" min="1">
                                     </div>
                                  </div>
                               </div>
@@ -62,7 +62,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Match Number</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 7" id="color" name="color" min="0">
+                                       <input type="number" placeholder="e.g. 7" name="MatchNumber" min="0">
                                     </div>
                                  </div>
                               </div>
@@ -73,7 +73,7 @@
                            <!-- DEFENSES -->
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="autodef" value="reach">
+                                 <input type="checkbox" name="AutoDef" value="reach">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
@@ -85,7 +85,7 @@
 
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="autodef" value="CROSS">
+                                 <input type="checkbox" name="AutoCross" value="CROSS">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
@@ -97,7 +97,7 @@
                            <!-- Shooting -->
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="autoshot" value="high">
+                                 <input type="checkbox" name="AutoHigh" value="high">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
@@ -109,7 +109,7 @@
 
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="autoshot" value="low">
+                                 <input type="checkbox" name="AutoLow" value="low">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
@@ -126,7 +126,7 @@
                            <h5> Category A</h5>
                            <li>
                               <label class="label-radio item-content">
-                                 <input type="radio" name="Catadef" value="Portcullis" checked="checked">
+                                 <input type="radio" name="ADef" value="Portcullis" checked="checked">
                                  <div class="item-inner">
                                     <div class="item-title">Portcullis</div>
                                  </div>
@@ -134,7 +134,7 @@
                            </li>
                            <li>
                               <label class="label-radio item-content">
-                                 <input type="radio" name="Catadef" value="CDF">
+                                 <input type="radio" name="ADef" value="CDF">
                                  <div class="item-inner">
                                     <div class="item-title">Cheval de FRIES</div>
                                  </div>
@@ -145,7 +145,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Num CROSSES</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" id="NumCrossA" name="NumCrossA" min="0">
+                                       <input type="number" placeholder="e.g. 2" name="CrossA" min="0">
                                     </div>
                                  </div>
                               </div>
@@ -166,7 +166,7 @@
                            <div class="item-input">
                               <div class="item-title label">Speed (1-5)</div>
                               <div class="range-slider">
-                                 <input type="range" name="CatA"min="1" max="5" step="1">
+                                 <input type="range" name="SpeedA"min="1" max="5" step="1">
                               </div>
                            </div>
                         </li>
@@ -174,7 +174,7 @@
                            <h5> Category B</h5>
                            <li>
                               <label class="label-radio item-content">
-                                 <input type="radio" name="CatBdef" value="Ramparts" checked="checked">
+                                 <input type="radio" name="DefB" value="Ramparts" checked="checked">
                                  <div class="item-inner">
                                     <div class="item-title">Ramparts</div>
                                  </div>
@@ -182,7 +182,7 @@
                            </li>
                            <li>
                               <label class="label-radio item-content">
-                                 <input type="radio" name="CatBdef" value="Moat">
+                                 <input type="radio" name="DefB" value="Moat">
                                  <div class="item-inner">
                                     <div class="item-title">Moat</div>
                                  </div>
@@ -193,7 +193,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Num CROSSES</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" id="NumCrossB" name="NumCrossB" min="0">
+                                       <input type="number" placeholder="e.g. 2" name="CrossB" min="0">
                                     </div>
                                  </div>
                               </div>
@@ -214,7 +214,7 @@
                            <div class="item-input">
                               <div class="item-title label">Speed (1-5)</div>
                               <div class="range-slider">
-                                 <input type="range" name="CatB"min="1" max="5" step="1">
+                                 <input type="range" name="SpeedB"min="1" max="5" step="1">
                               </div>
                            </div>
                         </li>
@@ -222,7 +222,7 @@
                            <h5> Category C</h5>
                            <li>
                               <label class="label-radio item-content">
-                                 <input type="radio" name="CatCdef" value="SallyPort" checked="checked">
+                                 <input type="radio" name="DefC" value="SallyPort" checked="checked">
                                  <div class="item-inner">
                                     <div class="item-title">SallyPort</div>
                                  </div>
@@ -230,7 +230,7 @@
                            </li>
                            <li>
                               <label class="label-radio item-content">
-                                 <input type="radio" name="CatCdef" value="DrawBridge">
+                                 <input type="radio" name="DefC" value="DrawBridge">
                                  <div class="item-inner">
                                     <div class="item-title">DrawBridge</div>
                                  </div>
@@ -241,7 +241,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Num CROSSES</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" id="NumCrossC" name="NumCrossC" min="0">
+                                       <input type="number" placeholder="e.g. 2" name="CrossC" min="0">
                                     </div>
                                  </div>
                               </div>
@@ -262,7 +262,7 @@
                            <div class="item-input">
                               <div class="item-title label">Speed (1-5)</div>
                               <div class="range-slider">
-                                 <input type="range" name="CatC"min="1" max="5" step="1">
+                                 <input type="range" name="SpeedC"min="1" max="5" step="1">
                               </div>
                            </div>
                         </li>
@@ -270,7 +270,7 @@
                            <h5> Category D</h5>
                            <li>
                               <label class="label-radio item-content">
-                                 <input type="radio" name="CatDdef" value="Rough Terrain" checked="checked">
+                                 <input type="radio" name="DefD" value="Rough Terrain" checked="checked">
                                  <div class="item-inner">
                                     <div class="item-title">Rough Terrain</div>
                                  </div>
@@ -278,7 +278,7 @@
                            </li>
                            <li>
                               <label class="label-radio item-content">
-                                 <input type="radio" name="CatDdef" value="Rock Wall">
+                                 <input type="radio" name="DefD" value="Rock Wall">
                                  <div class="item-inner">
                                     <div class="item-title">Rock Wall</div>
                                  </div>
@@ -289,7 +289,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Num CROSSES</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" id="NumCrossD" name="NumCrossD" min="0">
+                                       <input type="number" placeholder="e.g. 2" name="CrossD" min="0">
                                     </div>
                                  </div>
                               </div>
@@ -310,7 +310,7 @@
                            <div class="item-input">
                               <div class="item-title label">Speed (0-5)</div>
                               <div class="range-slider">
-                                 <input type="range" name="CatD"min="0" max="5" step="1">
+                                 <input type="range" name="SpeedD"min="0" max="5" step="1">
                               </div>
                            </div>
                         </li>
@@ -321,7 +321,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Num CROSSES</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" id="NumCrossE" name="NumCrossE" min="0">
+                                       <input type="number" placeholder="e.g. 2" name="CrossE" min="0">
                                     </div>
                                  </div>
                               </div>
@@ -342,7 +342,7 @@
                            <div class="item-input">
                               <div class="item-title label">Speed (1-5)</div>
                               <div class="range-slider">
-                                 <input type="range" name="CatE"min="1" max="5" step="1">
+                                 <input type="range" name="SpeedE"min="1" max="5" step="1">
                               </div>
                            </div>
                         </li>
@@ -367,26 +367,4 @@
             <script type="text/javascript" src="js/my-app.js"></script>
 </body>
 <script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
-<script type="text/javascript">
-   function sendToGoogleForm() {
-
-      //get values of form elements by their id with jquery
-      var name = $('#name').val();
-      var color = $('#color').val();
-
-      //POST form data to Google form with ajax
-      $.ajax({
-         url: "https://docs.google.com/a/francisparker.org/forms/d/1JVez5ms9mGhhYTlkXBgX2zOfWVK4wVG1znK6ZAFXohI/formResponse",
-         //use names of <input> elements from google form source
-         data: {
-            "entry.471564288": name,
-            "entry.216346827": color
-         },
-         type: "POST",
-         dataType: "xml"
-      });
-
-   }
-</script>
-
 </html>
