@@ -52,7 +52,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Team Number</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2485" name="TeamNumber" min="1">
+                                       <input type="number" placeholder="0" name="TeamNumber" min="1">
                                     </div>
                                  </div>
                               </div>
@@ -62,7 +62,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Match Number</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 7" name="MatchNumber" min="0">
+                                       <input type="number" placeholder="0" name="MatchNumber" min="0">
                                     </div>
                                  </div>
                               </div>
@@ -87,15 +87,27 @@
                            </li>
 
                            <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoCross" value="CROSS">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
+                              <a href="#" class="item-link smart-select">
+                                 <select name="AutoCross">
+                                    <option value="Did Not Attempt" selected>Did Not Attempt</option>
+                                    <option value="Portcullis" selected>Portcullis</option>
+                                    <option value="Cheval de Frise" selected>Cheval de Frise</option>
+                                    <option value="Ramparts" selected>Ramparts</option>
+                                    <option value="Moat" selected>Moat</option>
+                                    <option value="Drawbridge" selected>Drawbridge</option>
+                                    <option value="Sally Port" selected>Sally Port</option>
+                                    <option value="Rock Wall" selected>Rock Wall</option>
+                                    <option value="Rough Terrain" selected>Rough Terrain</option>
+                                    <option value="Low Bar" selected>Low Bar</option>
+
+                                 </select>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title">Attempted...</div>
+                                       <div class="item-after">Did Not Attempt</div>
+                                    </div>
                                  </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Cross a defense</div>
-                                 </div>
-                              </label>
+                              </a>
                            </li>
                            <!-- Shooting -->
                            <li>
@@ -122,7 +134,7 @@
                            </li>
                         </ul>
                      </div>
-                     <div class="content-block-title">TELEOP</div>
+                     <div class="content-block-title">TELEOP - DEFENSES</div>
                      <div class="list-block">
                         <ul>
 
@@ -130,230 +142,290 @@
 
 
                            <!-- DEFENSES -->
-                           <br>
-                           <h5> Category A</h5>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="ADef" value="Portcullis" checked="checked">
+                           <li class="accordion-item">
+                              <a href="#" class="item-content item-link">
                                  <div class="item-inner">
-                                    <div class="item-title">Portcullis</div>
+                                    <div class="item-title">Category A</div>
                                  </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="ADef" value="CDF">
-                                 <div class="item-inner">
-                                    <div class="item-title">Cheval de FRIES</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Num CROSSES</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" name="CrossA" min="0">
-                                    </div>
+                              </a>
+                              <div class="accordion-item-content">
+                                 <div class="list-block">
+                                    <ul>
+                                       <li>
+                                          <label class="label-radio item-content">
+                                             <input type="radio" name="ADef" value="Portcullis" checked="checked">
+                                             <div class="item-inner">
+                                                <div class="item-title">Portcullis</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <li>
+                                          <label class="label-radio item-content">
+                                             <input type="radio" name="ADef" value="CDF">
+                                             <div class="item-inner">
+                                                <div class="item-title">Cheval de FRIES</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <li>
+                                          <div class="item-content">
+                                             <div class="item-inner">
+                                                <div class="item-title label">Num CROSSES</div>
+                                                <div class="item-input">
+                                                   <input type="number" placeholder="0" name="CrossA" min="0">
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </li>
+                                       <li>
+                                          <label class="label-checkbox item-content">
+                                             <input type="checkbox" name="FailA" value="FA">
+                                             <div class="item-media">
+                                                <i class="icon icon-form-checkbox"></i>
+                                             </div>
+                                             <div class="item-inner">
+                                                <div class="item-title">Failed to CROSS</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <br/>
+                                       <li>
+                                          <div class="item-input">
+                                             <div class="item-title label">Speed (1-5)</div>
+                                             <div class="range-slider">
+                                                <input type="range" name="SpeedA"min="1" max="5" step="1">
+                                             </div>
+                                          </div>
+                                       </li>
+                                    </ul>
                                  </div>
                               </div>
                            </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="FailA" value="FA">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Failed to CROSS</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <br/>
-                           <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Speed (1-5)</div>
-                                 <div class="range-slider">
-                                    <input type="range" name="SpeedA"min="1" max="5" step="1">
-                                 </div>
-                              </div>
-                           </li>
+                           
                            <!-- CAT B -->
-                           <h5> Category B</h5>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="DefB" value="Ramparts" checked="checked">
+                           <li class="accordion-item">
+                              <a href="#" class="item-content item-link">
                                  <div class="item-inner">
-                                    <div class="item-title">Ramparts</div>
+                                    <div class="item-title">Category B</div>
                                  </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="DefB" value="Moat">
-                                 <div class="item-inner">
-                                    <div class="item-title">Moat</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Num CROSSES</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" name="CrossB" min="0">
-                                    </div>
+                              </a>
+                              <div class="accordion-item-content">
+                                 <div class="list-block">
+                                    <ul>
+                                       <li>
+                                          <label class="label-radio item-content">
+                                             <input type="radio" name="DefB" value="Ramparts" checked="checked">
+                                             <div class="item-inner">
+                                                <div class="item-title">Ramparts</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <li>
+                                          <label class="label-radio item-content">
+                                             <input type="radio" name="DefB" value="Moat">
+                                             <div class="item-inner">
+                                                <div class="item-title">Moat</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <li>
+                                          <div class="item-content">
+                                             <div class="item-inner">
+                                                <div class="item-title label">Num CROSSES</div>
+                                                <div class="item-input">
+                                                   <input type="number" placeholder="0" name="CrossB" min="0">
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </li>
+                                       <li>
+                                          <label class="label-checkbox item-content">
+                                             <input type="checkbox" name="FailB" value="FB">
+                                             <div class="item-media">
+                                                <i class="icon icon-form-checkbox"></i>
+                                             </div>
+                                             <div class="item-inner">
+                                                <div class="item-title">Failed to CROSS</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <br/>
+                                       <li>
+                                          <div class="item-input">
+                                             <div class="item-title label">Speed (1-5)</div>
+                                             <div class="range-slider">
+                                                <input type="range" name="SpeedB"min="1" max="5" step="1">
+                                             </div>
+                                          </div>
+                                       </li>
+                                    </ul>
                                  </div>
                               </div>
                            </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="FailB" value="FB">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
+                           
+                           <li class="accordion-item">
+                              <a href="#" class="item-content item-link">
                                  <div class="item-inner">
-                                    <div class="item-title">Failed to CROSS</div>
+                                    <div class="item-title">Category C</div>
                                  </div>
-                              </label>
-                           </li>
-                           <br/>
-                           <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Speed (1-5)</div>
-                                 <div class="range-slider">
-                                    <input type="range" name="SpeedB"min="1" max="5" step="1">
+                              </a>
+                              <div class="accordion-item-content">
+                                 <div class="list-block">
+                                    <ul>
+                                       <li>
+                                          <label class="label-radio item-content">
+                                             <input type="radio" name="DefC" value="SallyPort" checked="checked">
+                                             <div class="item-inner">
+                                                <div class="item-title">Sally Port</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <li>
+                                          <label class="label-radio item-content">
+                                             <input type="radio" name="DefC" value="DrawBridge">
+                                             <div class="item-inner">
+                                                <div class="item-title">Drawbridge</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <li>
+                                          <div class="item-content">
+                                             <div class="item-inner">
+                                                <div class="item-title label">Num CROSSES</div>
+                                                <div class="item-input">
+                                                   <input type="number" placeholder="0" name="CrossC" min="0">
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </li>
+                                       <li>
+                                          <label class="label-checkbox item-content">
+                                             <input type="checkbox" name="FailC" value="FC">
+                                             <div class="item-media">
+                                                <i class="icon icon-form-checkbox"></i>
+                                             </div>
+                                             <div class="item-inner">
+                                                <div class="item-title">Failed to CROSS</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <br/>
+                                       <li>
+                                          <div class="item-input">
+                                             <div class="item-title label">Speed (1-5)</div>
+                                             <div class="range-slider">
+                                                <input type="range" name="SpeedC"min="1" max="5" step="1">
+                                             </div>
+                                          </div>
+                                       </li>
+                                    </ul>
                                  </div>
                               </div>
                            </li>
-
-                           <h5> Category C</h5>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="DefC" value="SallyPort" checked="checked">
+                           <li class="accordion-item">
+                              <a href="#" class="item-content item-link">
                                  <div class="item-inner">
-                                    <div class="item-title">Sally Port</div>
+                                    <div class="item-title">Category D</div>
                                  </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="DefC" value="DrawBridge">
-                                 <div class="item-inner">
-                                    <div class="item-title">Drawbridge</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Num CROSSES</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" name="CrossC" min="0">
-                                    </div>
+                              </a>
+                              <div class="accordion-item-content">
+                                 <div class="list-block">
+                                    <ul>
+                                       <li>
+                                          <label class="label-radio item-content">
+                                             <input type="radio" name="DefD" value="Rough Terrain" checked="checked">
+                                             <div class="item-inner">
+                                                <div class="item-title">Rough Terrain</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <li>
+                                          <label class="label-radio item-content">
+                                             <input type="radio" name="DefD" value="Rock Wall">
+                                             <div class="item-inner">
+                                                <div class="item-title">Rock Wall</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <li>
+                                          <div class="item-content">
+                                             <div class="item-inner">
+                                                <div class="item-title label">Num CROSSES</div>
+                                                <div class="item-input">
+                                                   <input type="number" placeholder="0" name="CrossD" min="0">
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </li>
+                                       <li>
+                                          <label class="label-checkbox item-content">
+                                             <input type="checkbox" name="FailD" value="FD">
+                                             <div class="item-media">
+                                                <i class="icon icon-form-checkbox"></i>
+                                             </div>
+                                             <div class="item-inner">
+                                                <div class="item-title">Failed to CROSS</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <br/>
+                                       <li>
+                                          <div class="item-input">
+                                             <div class="item-title label">Speed (1-5)</div>
+                                             <div class="range-slider">
+                                                <input type="range" name="SpeedD"min="1" max="5" step="1">
+                                             </div>
+                                          </div>
+                                       </li>
+                                    </ul>
                                  </div>
                               </div>
                            </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="FailC" value="FC">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
+                           
+                           <li class="accordion-item">
+                              <a href="#" class="item-content item-link">
                                  <div class="item-inner">
-                                    <div class="item-title">Failed to CROSS</div>
+                                    <div class="item-title">Category E</div>
                                  </div>
-                              </label>
-                           </li>
-                           <br/>
-                           <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Speed (1-5)</div>
-                                 <div class="range-slider">
-                                    <input type="range" name="SpeedC"min="1" max="5" step="1">
+                              </a>
+                              <div class="accordion-item-content">
+                                 <div class="list-block">
+                                    <ul>
+                                       <li>
+                                          <div class="item-content">
+                                             <div class="item-inner">
+                                                <div class="item-title label">Num CROSSES</div>
+                                                <div class="item-input">
+                                                   <input type="number" placeholder="0" name="CrossE" min="0">
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </li>
+                                       <li>
+                                          <label class="label-checkbox item-content">
+                                             <input type="checkbox" name="FailE" value="FD">
+                                             <div class="item-media">
+                                                <i class="icon icon-form-checkbox"></i>
+                                             </div>
+                                             <div class="item-inner">
+                                                <div class="item-title">Failed to CROSS</div>
+                                             </div>
+                                          </label>
+                                       </li>
+                                       <br/>
+                                       <li>
+                                          <div class="item-input">
+                                             <div class="item-title label">Speed (1-5)</div>
+                                             <div class="range-slider">
+                                                <input type="range" name="SpeedE"min="1" max="5" step="1">
+                                             </div>
+                                          </div>
+                                       </li>
+                                    </ul>
                                  </div>
                               </div>
                            </li>
-
-                           <h5> Category D</h5>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="DefD" value="Rough Terrain" checked="checked">
-                                 <div class="item-inner">
-                                    <div class="item-title">Rough Terrain</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="DefD" value="Rock Wall">
-                                 <div class="item-inner">
-                                    <div class="item-title">Rock Wall</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Num CROSSES</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" name="CrossD" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="FailD" value="FD">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Failed to CROSS</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <br/>
-                           <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Speed (1-5)</div>
-                                 <div class="range-slider">
-                                    <input type="range" name="SpeedD"min="1" max="5" step="1">
-                                 </div>
-                              </div>
-                           </li>
-
-                           <h5> Low Bar</h5>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Num CROSSES</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="e.g. 2" name="CrossE" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="FailE" value="FD">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Failed to CROSS</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <br/>
-                           <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Speed (1-5)</div>
-                                 <div class="range-slider">
-                                    <input type="range" name="SpeedE"min="1" max="5" step="1">
-                                 </div>
-                              </div>
-                           </li>
+                           
                         </ul>
                      </div>
                      <!-- END DEFENSE BEGIN SHOOTING -->
@@ -378,12 +450,38 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Number of Fouls</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="e.g. 3" name="NumFouls" min="0">
+                                       <input type="number" placeholder="0" name="NumFouls" min="0">
                                     </div>
                                  </div>
                               </div>
                            </li>
                         </ul>
+                     </div>
+                     <div class="content-block-title">TELEOP - SHOOTING</div>
+                     <div class="list-block">
+                        <ul>
+                           <li>
+                              <div class="item-content">
+                                 <div class="item-inner">
+                                    <div class="item-title label">Number of High Shots</div>
+                                    <div class="item-input">
+                                       <input type="number" placeholder="0" name="NumHigh" min="0">
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="item-content">
+                                 <div class="item-inner">
+                                    <div class="item-title label">Number of Low Shots</div>
+                                    <div class="item-input">
+                                       <input type="number" placeholder="0" name="NumLow" min="0">
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                        
                      </div>
                      <div class="list-block">
                         <!-- run sendToGoogleForm on form submit -->
@@ -393,8 +491,6 @@
                            </li>
                         </ul>
                      </div>
-
-
 
 
                      <!-- Bottom Toolbar-->
