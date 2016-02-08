@@ -76,12 +76,12 @@
                         <ul>
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoDef" value="reach">
+                                 <input type="checkbox" name="AutoReach" value="reach">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
                                  <div class="item-inner">
-                                    <div class="item-title">Reach a Defense</div>
+                                    <div class="item-title" value="false">Reach a Defense</div>
                                  </div>
                               </label>
                            </li>
@@ -103,7 +103,7 @@
                                  </select>
                                  <div class="item-content">
                                     <div class="item-inner">
-                                       <div class="item-title">Attempted...</div>
+                                       <div class="item-title">Lined up for</div>
                                        <div class="item-after">Did Not Attempt</div>
                                     </div>
                                  </div>
@@ -112,7 +112,7 @@
                            <!-- Shooting -->
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoHigh" value="high">
+                                 <input type="checkbox" name="AutoHighShot" value="high">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
@@ -123,7 +123,7 @@
                            </li>
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoLow" value="low">
+                                 <input type="checkbox" name="AutoLowShot" value="low">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
@@ -201,7 +201,7 @@
                                  </div>
                               </div>
                            </li>
-                           
+
                            <!-- CAT B -->
                            <li class="accordion-item">
                               <a href="#" class="item-content item-link">
@@ -262,7 +262,7 @@
                                  </div>
                               </div>
                            </li>
-                           
+
                            <li class="accordion-item">
                               <a href="#" class="item-content item-link">
                                  <div class="item-inner">
@@ -381,7 +381,7 @@
                                  </div>
                               </div>
                            </li>
-                           
+
                            <li class="accordion-item">
                               <a href="#" class="item-content item-link">
                                  <div class="item-inner">
@@ -425,11 +425,37 @@
                                  </div>
                               </div>
                            </li>
-                           
+
                         </ul>
                      </div>
-                     <!-- END DEFENSE BEGIN SHOOTING -->
 
+                     <!-- END DEFENSE BEGIN SHOOTING -->
+                     <div class="content-block-title">TELEOP - SHOOTING</div>
+                     <div class="list-block">
+                        <ul>
+                           <li>
+                              <div class="item-content">
+                                 <div class="item-inner">
+                                    <div class="item-title label">Number of High Shots</div>
+                                    <div class="item-input">
+                                       <input type="number" placeholder="0" name="NumHigh" min="0">
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="item-content">
+                                 <div class="item-inner">
+                                    <div class="item-title label">Number of Low Shots</div>
+                                    <div class="item-input">
+                                       <input type="number" placeholder="0" name="NumLow" min="0">
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+
+                     </div>
                      <div class="content-block-title">MISCELLANEOUS</div>
                      <div class="list-block">
                         <ul>
@@ -457,32 +483,6 @@
                            </li>
                         </ul>
                      </div>
-                     <div class="content-block-title">TELEOP - SHOOTING</div>
-                     <div class="list-block">
-                        <ul>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Number of High Shots</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="NumHigh" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Number of Low Shots</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="NumLow" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                        </ul>
-                        
-                     </div>
                      <div class="list-block">
                         <!-- run sendToGoogleForm on form submit -->
                         <ul>
@@ -509,4 +509,3 @@
 <script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
 
 </html>
-
