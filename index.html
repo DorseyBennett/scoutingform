@@ -10,6 +10,7 @@
    <!-- Path to Framework7 Library CSS-->
    <link rel="stylesheet" href="css/framework7.ios.min.css">
    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+   <link rel="stylesheet" href="includes/rateyo/jquery.rateyo.min.css">
 
    <!-- Path to your custom app styles-->
    <link rel="stylesheet" href="css/my-app.css">
@@ -26,7 +27,7 @@
          <div class="navbar">
             <div class="navbar-inner">
                <!-- We have home navbar without left link-->
-               <div class="center sliding">DANKSTRONGHOLD 2016 Scouting Form</div>
+               <div class="center sliding">STRONGHOLD 2016 Scouting Form</div>
 
             </div>
          </div>
@@ -201,6 +202,7 @@
                                        <li>
                                           <div class="item-input">
                                              <div class="item-title label">Speed (1-5)</div>
+                                             <div id="rateYo"></div>
                                              <div class="range-slider">
                                                 <input type="range" name="SpeedA" min="1" max="5" step="1">
                                              </div>
@@ -262,6 +264,7 @@
                                        <li>
                                           <div class="item-input">
                                              <div class="item-title label">Speed (1-5)</div>
+
                                              <div class="range-slider">
                                                 <input type="range" name="SpeedB" min="1" max="5" step="1">
                                              </div>
@@ -544,5 +547,19 @@
    </div>
 </body>
 <script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
-
+<script type="text/javascript" src="includes/rateyo/jquery.rateyo.min.js"></script>
+<script type="text/javascript">
+$(function () {
+ 
+  $("#rateYo").rateYo({
+    rating: 2,
+    fullStar: true
+  });
+});
+// Getter
+var normalFill = $("#rateYo").rateYo("option", "fullStar"); //returns true
+ 
+// Setter
+$("#rateYo").rateYo("option", "fullStar", true); //returns a jQuery Element
+</script>
 </html>
