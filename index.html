@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -177,35 +178,43 @@
                                              </div>
                                           </label>
                                        </li>
-                                       <li>
-                                          <div class="item-content">
-                                             <div class="item-inner">
-                                                <div class="item-title label">Num CROSSES</div>
-                                                <div class="item-input">
-                                                   <input type="number" placeholder="0" name="CrossA" min="0">
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <label class="label-checkbox item-content">
-                                             <input type="checkbox" name="FailA" value="FA">
-                                             <div class="item-media">
-                                                <i class="icon icon-form-checkbox"></i>
-                                             </div>
-                                             <div class="item-inner">
-                                                <div class="item-title">Failed to CROSS</div>
-                                             </div>
-                                          </label>
-                                       </li>
+                                       <br/>
+                                       <br/>
+                                          <ul>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <!-- Checked by default -->
+                                                   <input type="radio" name="CatA" value="Crossed">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Crossed</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <!-- Another radio input -->
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="CatA" value="StucK">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Got Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="CatA" value="!attempt"  checked="checked">
+                                                   <div class="item-inner">
+                                                      <div class="item-title" >Did not attempt</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+
+                                          </ul>
                                        <br/>
                                        <li>
                                           <div class="item-input">
                                              <div class="item-title label">Speed (1-5)</div>
                                              <div id="rateYo"></div>
-                                             <div class="range-slider">
-                                                <input type="range" name="SpeedA" min="1" max="5" step="1">
-                                             </div>
+                                             <br/>
                                           </div>
                                        </li>
                                     </ul>
@@ -500,8 +509,8 @@
                         </ul>
                      </div>
                      <div class="list-block">
-                           <!-- Text inputs -->
-                           <ul>
+                        <!-- Text inputs -->
+                        <ul>
                            <li>
                               <div class="item-content">
                                  <div class="item-inner">
@@ -549,17 +558,18 @@
 <script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="includes/rateyo/jquery.rateyo.min.js"></script>
 <script type="text/javascript">
-$(function () {
+   $(function() {
 
-  $("#rateYo").rateYo({
-    rating: 2,
-    fullStar: true
-  });
-});
-// Getter
-var normalFill = $("#rateYo").rateYo("option", "fullStar"); //returns true
- 
-// Setter
-$("#rateYo").rateYo("option", "fullStar", true); //returns a jQuery Element
+      $("#rateYo").rateYo({
+         rating: 2,
+         fullStar: true
+      });
+   });
+   // Getter
+   var normalFill = $("#rateYo").rateYo("option", "fullStar"); //returns true
+    
+   // Setter
+   $("#rateYo").rateYo("option", "fullStar", true); //returns a jQuery Element
 </script>
+
 </html>
