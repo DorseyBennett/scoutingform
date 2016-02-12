@@ -806,7 +806,7 @@
    $("#form").submit(function(eventObj) {
       for (i = 0; i < StarSelectors.length; i++) {
          var currRef = "#" + StarSelectors[i];
-         $('<input />')
+         $('<input />').attr('type', 'hidden')
             .attr('name', StarSelectors[i])
             .attr('value', $(currRef).rateYo("rating").toString())
             .appendTo('#form');
