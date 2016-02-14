@@ -17,6 +17,42 @@
 
    <!-- Path to your custom app styles-->
    <link rel="stylesheet" href="css/my-app.css">
+
+   <script>
+   
+   function validateForm() {
+      var toConfirm = ["DefA", "DefB", "DefC", "DefD", "TeamNumber", "MatchNumber"];
+      for(i = 0; i < toConfirm.length; i++) {
+         var inputs = document.getElementsByName(toConfirm[i]);
+         var type = inputs[0].type;
+
+         if(type === "number") {
+            var value=inputs[0].value;
+            if(value=="0" || value == null || value == "") {
+               alert("Please enter " + toConfirm[i]);
+               return false;
+            }
+         }
+
+         if(type === "radio") {
+            var invalid=true;
+            for(j = 0; j < inputs.length; j++) {
+               if(inputs[j].checked) {
+                  invalid=false;
+               }
+            }
+            if(invalid) {
+               alert("Please enter " + toConfirm[i]);
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   </script>
+
 </head>
 
 <body>
@@ -40,7 +76,7 @@
             <div data-page="index" class="page">
                <!-- Scrollable page content-->
                <div class="page-content">
-                  <form action="https://script.google.com/a/macros/francisparker.org/s/AKfycbwSB9g43MbQsRBKZSc-eG2aypRS9gAPedZXX1t5qQhyU7vjJYU/exec" method="POST" id="form" target="_self" onsubmit="">
+                  <form action="https://script.google.com/a/macros/francisparker.org/s/AKfycbwSB9g43MbQsRBKZSc-eG2aypRS9gAPedZXX1t5qQhyU7vjJYU/exec" method="POST" id="form" name="form" onsubmit="return validateForm()">
 
                      <div class="content-block-title">PRE MATCH</div>
 
@@ -56,7 +92,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Team Number</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="0" name="TeamNumber" min="1">
+                                       <input type="number" placeholder="0" name="TeamNumber" min="1" >
                                     </div>
                                  </div>
                               </div>
@@ -66,7 +102,7 @@
                                  <div class="item-inner">
                                     <div class="item-title label">Match Number</div>
                                     <div class="item-input">
-                                       <input type="number" placeholder="0" name="MatchNumber" min="0">
+                                       <input type="number" placeholder="0" name="MatchNumber" min="1">
                                     </div>
                                  </div>
                               </div>
@@ -183,18 +219,18 @@
                            </li>
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoHigh" value="success">
+                                 <input type="checkbox" name="AutoHigh" value="success" onChange="highExpand()" id="AutoHigh">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
                                  <div class="item-inner">
-                                    <div class="item-title">High Shot</div>
+                                    <div class="item-title">Attempt High Shot</div>
                                  </div>
                               </label>
                            </li>
                            <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoHigh" value="fail">
+                              <label class="label-checkbox item-content" type="hidden" id="HighFail">
+                                 <input type="checkbox" name="AutoHigh">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
@@ -205,18 +241,18 @@
                            </li>
                            <li>
                               <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoLow" value="success">
+                                 <input type="checkbox" name="AutoLow" value="1" id="AutoHigh">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
                                  <div class="item-inner">
-                                    <div class="item-title">Low Shot</div>
+                                    <div class="item-title">Attempt Low Shot</div>
                                  </div>
                               </label>
                            </li>
                            <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoLow" value="fail">
+                              <label class="label-checkbox item-content" type="hidden" id="LowFail">
+                                 <input type="checkbox" name="AutoLow">
                                  <div class="item-media">
                                     <i class="icon icon-form-checkbox"></i>
                                  </div>
@@ -227,8 +263,6 @@
                            </li>
                         </ul>
                      </div>
-
-
 
                      <div class="content-block-title">Teleop</div>
                      <div class="list-block">
@@ -245,7 +279,7 @@
                                     <ul>
                                        <li>
                                           <label class="label-radio item-content">
-                                             <input type="radio" name="ADef" value="Portcullis" checked="checked">
+                                             <input type="radio" name="DefA" value="Portcullis">
                                              <div class="item-inner">
                                                 <div class="item-title">Portcullis</div>
                                              </div>
@@ -283,7 +317,7 @@
                                           <!-- Another radio input -->
                                           <li>
                                              <label class="label-radio item-content">
-                                                <input type="radio" name="Afail" value="StucK">
+                                                <input type="radio" name="Afail" value="Stuck">
                                                 <div class="item-inner">
                                                    <div class="item-title">Got Stuck</div>
                                                 </div>
@@ -324,7 +358,7 @@
                                     <ul>
                                        <li>
                                           <label class="label-radio item-content">
-                                             <input type="radio" name="DefB" value="Ramparts" checked="checked">
+                                             <input type="radio" name="DefB" value="Ramparts">
                                              <div class="item-inner">
                                                 <div class="item-title">Ramparts</div>
                                              </div>
@@ -401,7 +435,7 @@
                                     <ul>
                                        <li>
                                           <label class="label-radio item-content">
-                                             <input type="radio" name="DefC" value="SallyPort" checked="checked">
+                                             <input type="radio" name="DefC" value="SallyPort">
                                              <div class="item-inner">
                                                 <div class="item-title">Sally Port</div>
                                              </div>
@@ -477,7 +511,7 @@
                                     <ul>
                                        <li>
                                           <label class="label-radio item-content">
-                                             <input type="radio" name="DefD" value="Rough Terrain" checked="checked">
+                                             <input type="radio" name="DefD" value="Rough Terrain">
                                              <div class="item-inner">
                                                 <div class="item-title">Rough Terrain</div>
                                              </div>
@@ -688,43 +722,60 @@
 
                      <div class="content-block-title">MISCELLANEOUS / RATINGS</div>
                      <!-- CASTLE CHALLENGING -->
+                     <!-- This list is doubly nested. Just trust me. -->
                      <div class="list-block">
                         <ul>
-                           <br/>
                            <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Intake Speed (1-5)</div>
-                                 <div id="IntakeSpeed"></div>
+                              <div class="list-block inset">
+                                 <ul>
+                                    <br/>
+                                    <br/>
+                                    <li>
+                                       <div class="item-input">
+                                          <div class="item-title label">Intake Speed (1-5)</div>
+                                          <div id="IntakeSpeed"></div>
+                                          <br/>
+                                       </div>
+                                    </li>
+                                    <hr/>
+                                    <br/>
+                                    <li>
+                                       <div class="item-input">
+                                          <div class="item-title label">Robot Maneuverability (1-5)</div>
+                                          <div id="Maneuverability"></div>
+                                          <br/>
+                                       </div>
+                                    </li>
+                                    <hr/>
+                                    <br/>
+                                    <li>
+                                       <div class="item-input">
+                                          <div class="item-title label">Drives with Purpose (1-5)</div>
+                                          <div id="Purpose"></div>
+                                       </br>
+                                    </div>
+                                 </li>
+                                 <hr/>
                                  <br/>
-                              </div>
-                           </li>
-                           <hr/>
-                           <br/>
-                           <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Robot Maneuverability (1-5)</div>
-                                 <div id="Maneuverability"></div>
+                                 <li>
+                                    <div class="item-input">
+                                       <div class="item-title label">Driver Aggression (1-5)</div>
+                                       <div id="Aggression"></div>
+                                       <br/>
+                                    </div>
+                                 </li>
+                                 <hr/>
                                  <br/>
-                              </div>
-                           </li>
-                           <hr/>
-                           <br/>
-                           <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Drives with Purpose (1-5)</div>
-                                 <div id="Purpose"></div>
-                                 </br>
-                              </div>
-                           </li>
-                           <hr/>
-                           <br/>
-                           <li>
-                              <div class="item-input">
-                                 <div class="item-title label">Driver Agression (1-5)</div>
-                                 <div id="Agression"></div>
-                                 <br/>
-                              </div>
-                           </li>
+                                 <li>
+                                    <div class="item-input">
+                                       <div class="item-title label">Defense (1-5)</div>
+                                       <div id="Defense"></div>
+                                       <br/>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+
                         </ul>
                      </div>
 
@@ -768,15 +819,15 @@
                         <!-- run sendToGoogleForm on form submit -->
                         <ul>
                            <li>
-                              <input type="submit" value="Submit" class="button button-big button-green" min="0">
+                              <input type="submit" value="Submit" class="button button-big button-green">
                            </li>
                         </ul>
                      </div>
 
                      <!-- Bottom Toolbar-->
 
+                  </div>
                </div>
-            </div>
             </form>
             <!-- Path to Framework7 Library JS-->
             <script type="text/javascript" src="js/framework7.min.js"></script>
@@ -789,30 +840,63 @@
 <script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="includes/rateyo/jquery.rateyo.min.js"></script>
 <script type="text/javascript">
-   var StarSelectors = ["SpeedA", "SpeedB", "SpeedC", "SpeedD", "SpeedE", "IntakeSpeed", "Maneuverability", "Agression","Purpose"];
-   $(function() {
-      for (i = 0; i < StarSelectors.length; i++) {
-         var currRef = "#" + StarSelectors[i];
-         $(currRef).rateYo({
-            rating: 0,
-            fullStar: true
-         });
+//star stuff
+var StarSelectors = ["SpeedA", "SpeedB", "SpeedC", "SpeedD", "SpeedE", "IntakeSpeed", "Maneuverability", "Aggression","Purpose","Defense"];
+
+
+
+$(function() {
+   for (i = 0; i < StarSelectors.length; i++) {
+      var currRef = "#" + StarSelectors[i];
+      $(currRef).rateYo({
+         rating: 0,
+         fullStar: true
+      });
          //getter
          var normalFill = $(currRef).rateYo("option", "fullStar"); //returns true
          // Setter
          $(currRef).rateYo("option", "fullStar", true); //returns a jQuery Element
       }
    });
-   $("#form").submit(function(eventObj) {
-      for (i = 0; i < StarSelectors.length; i++) {
-         var currRef = "#" + StarSelectors[i];
-         $('<input />').attr('type', 'hidden')
-            .attr('name', StarSelectors[i])
-            .attr('value', $(currRef).rateYo("rating").toString())
-            .appendTo('#form');
+$("#form").submit(function(eventObj) {
+   //Add star ratings to form
+   for (i = 0; i < StarSelectors.length; i++) {
+      var currRef = "#" + StarSelectors[i];
+      $('<input />').attr('type', 'hidden')
+      .attr('name', StarSelectors[i])
+      .attr('value', $(currRef).rateYo("rating").toString())
+      .appendTo('#form');
+   }
+
+   //append 
+   //freaking radio buttons
+   //NOTE: the logic to include radio buttons for this seems really convoluted so I am just going to make those NULL, aight?
+   var inputs = document.getElementsByTagName("input");
+   for( i = 0; i < inputs.length; i++) {
+      var value = inputs[i].value;
+      var type = inputs[i].type;
+      if(type ==="number" && (value == null || value == "")) {
+         //I don't know why you have to do it this way. You just do.
+         document.getElementsByTagName("input")[i].value = 0;
+         continue;
       }
-      return true;
-   });
+      if(type ==="checkbox" && inputs[i].checked == false) {
+         //wow, this is incredibly hacky
+         document.getElementsByTagName("input")[i].value = 0;
+         document.getElementsByTagName("input")[i].checked = true;
+         continue;
+      }
+
+   }
+   return true;
+});
+
+
+
 </script>
+
+
+
+
 
 </html>
