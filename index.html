@@ -59,7 +59,7 @@
             document.getElementsByTagName("input")[i].value = 0;
             continue;
          }
-         if(type ==="checkbox" && inputs[i].checked == false) {
+         if(type ==="checkbox" && inputs[i].checked == false && value == "1") {
             //wow, this is incredibly hacky
             document.getElementsByTagName("input")[i].value = 0;
             document.getElementsByTagName("input")[i].checked = true;
@@ -894,6 +894,9 @@ $("#form").submit(function(eventObj) {
 
 
 </script>
+
+
+
 
 
 </html>
