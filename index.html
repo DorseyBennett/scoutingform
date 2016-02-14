@@ -47,11 +47,30 @@
             }
          }
       }
+      //append 0s to all relevant data
+      //freaking radio buttons
+      //NOTE: the logic to include radio buttons for this seems really convoluted so I am just going to make those NULL, aight?
+      var inputs = document.getElementsByTagName("input");
+      for( i = 0; i < inputs.length; i++) {
+         var value = inputs[i].value;
+         var type = inputs[i].type;
+         if(type ==="number" && (value == null || value == "")) {
+            //I don't know why you have to do it this way. You just do.
+            document.getElementsByTagName("input")[i].value = 0;
+            continue;
+         }
+         if(type ==="checkbox" && inputs[i].checked == false) {
+            //wow, this is incredibly hacky
+            document.getElementsByTagName("input")[i].value = 0;
+            document.getElementsByTagName("input")[i].checked = true;
+            continue;
+         }
 
+      }
       return true;
    }
 
-   </script>
+</script>
 
 </head>
 
@@ -868,35 +887,13 @@ $("#form").submit(function(eventObj) {
       .appendTo('#form');
    }
 
-   //append 
-   //freaking radio buttons
-   //NOTE: the logic to include radio buttons for this seems really convoluted so I am just going to make those NULL, aight?
-   var inputs = document.getElementsByTagName("input");
-   for( i = 0; i < inputs.length; i++) {
-      var value = inputs[i].value;
-      var type = inputs[i].type;
-      if(type ==="number" && (value == null || value == "")) {
-         //I don't know why you have to do it this way. You just do.
-         document.getElementsByTagName("input")[i].value = 0;
-         continue;
-      }
-      if(type ==="checkbox" && inputs[i].checked == false) {
-         //wow, this is incredibly hacky
-         document.getElementsByTagName("input")[i].value = 0;
-         document.getElementsByTagName("input")[i].checked = true;
-         continue;
-      }
-
-   }
+   
    return true;
 });
 
 
 
 </script>
-
-
-
 
 
 </html>
