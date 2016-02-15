@@ -2,6 +2,13 @@
 <html>
 
 <head>
+
+   <style type="text/css">
+   div {
+      text-overflow: initial;
+   }
+   </style>
+
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
    <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,6 +28,20 @@
    <script>
    
    function validateForm() {
+      //First, check for noshow
+      var NoShow = document.getElementsByName("NoShow")[0];
+      if(NoShow.value =="1") {
+         var inputs = document.getElementsByTagName("input");
+         for( i = 0; i < inputs.length; i++) {
+            var value = inputs[i].value;
+            var type = inputs[i].type;
+            document.getElementsByTagName("input")[i].value = 0;
+            if(type=="checkbox") 
+               document.getElementsByTagName("input")[i].checked = true;
+         }
+         return true;
+      }
+
       var toConfirm = ["DefA", "DefB", "DefC", "DefD", "TeamNumber", "MatchNumber"];
       for(i = 0; i < toConfirm.length; i++) {
          var inputs = document.getElementsByName(toConfirm[i]);
@@ -47,829 +68,825 @@
             }
          }
       }
-      //append 0s to all relevant data
-      //freaking radio buttons
-      //NOTE: the logic to include radio buttons for this seems really convoluted so I am just going to make those NULL, aight?
-      var inputs = document.getElementsByTagName("input");
-      for( i = 0; i < inputs.length; i++) {
-         var value = inputs[i].value;
-         var type = inputs[i].type;
-         if(type ==="number" && (value == null || value == "")) {
-            //I don't know why you have to do it this way. You just do.
-            document.getElementsByTagName("input")[i].value = 0;
-            continue;
-         }
-         if(type ==="checkbox" && inputs[i].checked == false && value == "1") {
-            //wow, this is incredibly hacky
-            document.getElementsByTagName("input")[i].value = 0;
-            document.getElementsByTagName("input")[i].checked = true;
-            continue;
-         }
+         //append 0s to all relevant data
+         //freaking radio buttons
+         //NOTE: the logic to include radio buttons for this seems really convoluted so I am just going to make those NULL, aight?
+         var inputs = document.getElementsByTagName("input");
+         for( i = 0; i < inputs.length; i++) {
+            var value = inputs[i].value;
+            var type = inputs[i].type;
+            if(type ==="number" && (value == null || value == "")) {
+               //I don't know why you have to do it this way. You just do.
+               document.getElementsByTagName("input")[i].value = 0;
+               continue;
+            }
+            if(type ==="checkbox" && inputs[i].checked == false && value == "1") {
+               //wow, this is incredibly hacky
+               document.getElementsByTagName("input")[i].value = 0;
+               document.getElementsByTagName("input")[i].checked = true;
+               continue;
+            }
 
+         }
+         return true;
       }
-      return true;
-   }
 
-</script>
+      </script>
 
-</head>
+   </head>
 
-<body>
+   <body>
 
 
-   <!-- Views-->
-   <div class="views">
-      <!-- Your main view, should have "view-main" class-->
-      <div class="view view-main">
-         <!-- Top Navbar-->
-         <div class="navbar">
-            <div class="navbar-inner">
-               <!-- We have home navbar without left link-->
-               <div class="center">STRONGHOLD 2016 Scouting Form</div>
+      <!-- Views-->
+      <div class="views">
+         <!-- Your main view, should have "view-main" class-->
+         <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+               <div class="navbar-inner">
+                  <!-- We have home navbar without left link-->
+                  <div class="center">STRONGHOLD 2016 Scouting Form</div>
 
+               </div>
+            </div>
+            <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+               <!-- Page, data-page contains page name-->
+               <div data-page="index" class="page">
+                  <!-- Scrollable page content-->
+                  <div class="page-content">
+                     <form action="https://script.google.com/a/macros/francisparker.org/s/AKfycbwSB9g43MbQsRBKZSc-eG2aypRS9gAPedZXX1t5qQhyU7vjJYU/exec" method="POST" id="form" name="form" onsubmit="return validateForm()">
+
+                        <div class="content-block-title">PRE MATCH</div>
+
+
+
+                        <div class="list-block">
+                           <!-- form start -->
+                           <!-- PREMATCH -->
+                           <ul>
+                              <!-- Text inputs -->
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Team #</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="TeamNumber" min="1" >
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Match #</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="MatchNumber" min="1">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="NoShow" value="1">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title" value="false">No Show?</div>
+                                    </div>
+                                 </label>
+                              </li>
+                           </ul>
+                        </div>
+
+                        <div class="content-block-title">Auto</div>
+                        <div class="list-block">
+                           <ul>
+                              <li class="accordion-item">
+                                 <a href="#" class="item-content item-link">
+                                    <div class="item-inner">
+                                       <div class="item-title"><u>Lined up on...</u></div>
+                                    </div>
+                                 </a>
+                                 <div class="accordion-item-content">
+                                    <div class="list-block inset">
+                                       <ul>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="AutoDef" value="A">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Category A</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="AutoDef" value="B">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Category B</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="AutoDef" value="C">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Category C</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="AutoDef" value="D">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Category D</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="AutoDef" value="E">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Category E</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="AutoDef" value="Spy">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Spy</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="AutoDef" value="None" checked="checked">
+                                                <div class="item-inner">
+                                                   <div class="item-title">None</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <label class="label-checkbox item-content">
+                                    <!-- Checked by default -->
+                                    <input type="checkbox" name="Autoreach" value="1">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title">Reached<br/>Defense</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <!-- Another chekbox item -->
+                              <li>
+                                 <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="AutodefCross" value="1">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title">Crossed<br/>Defense</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="AutoHigh" value="1" onChange="highExpand()" id="AutoHigh">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title">Attempt<br/>High Shot</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <label class="label-checkbox item-content" id="HighFail">
+                                    <input type="checkbox" name="AutoHighFail" value="1">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title">Fail?</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="AutoLow" value="1" id="AutoHigh">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title">Attempt<br/>Low Shot</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <label class="label-checkbox item-content" id="LowFail">
+                                    <input type="checkbox" name="AutoLowFail" value="1">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title">Fail?</div>
+                                    </div>
+                                 </label>
+                              </li>
+                           </ul>
+                        </div>
+
+                        <div class="content-block-title">Teleop</div>
+                        <div class="list-block">
+                           <!-- DEFENSES -->
+                           <ul>
+                              <li class="accordion-item">
+                                 <a href="#" class="item-content item-link">
+                                    <div class="item-inner">
+                                       <div class="item-title"><u>Category A</u></div>
+                                    </div>
+                                 </a>
+                                 <div class="accordion-item-content">
+                                    <div class="list-block inset">
+                                       <ul>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="DefA" value="Portcullis">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Portcullis</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="DefA" value="CDF">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Cheval<br/>de Frise</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <div class="item-content">
+                                                <div class="item-inner">
+                                                   <div class="item-title label">Number of<br/>Crosses</div>
+                                                   <div class="item-input">
+                                                      <input type="number" placeholder="0" name="NumCrossA" min="0">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <br/>
+                                          <ul>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <!-- Checked by default -->
+                                                   <input type="radio" name="Afail" value="Fail not stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Failed,<br/>Not Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <!-- Another radio input -->
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Afail" value="Stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Afail" value="success" checked>
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Success<br/>OR no<br/>Attempt</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                          </ul>
+                                          <br/>
+                                          <li>
+                                             <div class="item-input">
+                                                <div class="item-title label">Speed (1-5)</div>
+                                                <div id="SpeedA"></div>
+                                                <br/>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </li>
+
+                              <!-- CAT B -->
+                              <li class="accordion-item">
+                                 <a href="#" class="item-content item-link">
+                                    <div class="item-inner">
+                                       <div class="item-title"><u>Category B</u></div>
+                                    </div>
+                                 </a>
+                                 <div class="accordion-item-content">
+                                    <div class="list-block inset">
+                                       <ul>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="DefB" value="Ramparts">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Ramparts</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="DefB" value="Moat">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Moat</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <div class="item-content">
+                                                <div class="item-inner">
+                                                   <div class="item-title label">Number of Crosses</div>
+                                                   <div class="item-input">
+                                                      <input type="number" placeholder="0" name="NumCrossB" min="0">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <ul>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <!-- Checked by default -->
+                                                   <input type="radio" name="Bfail" value="Fail not stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Failed,<br/>Not Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <!-- Another radio input -->
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Bfail" value="Stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Bfail" value="success" checked>
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Success<br/>OR no<br/>Attempt</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+
+                                          </ul>
+                                          <br/>
+                                          <li>
+                                             <div class="item-input">
+                                                <div class="item-title label">Speed (1-5)</div>
+                                                <div id="SpeedB"></div>
+                                                <br/>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </li>
+
+                              <li class="accordion-item">
+                                 <a href="#" class="item-content item-link">
+                                    <div class="item-inner">
+                                       <div class="item-title"><u>Category C</u></div>
+                                    </div>
+                                 </a>
+                                 <div class="accordion-item-content">
+                                    <div class="list-block inset">
+                                       <ul>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="DefC" value="SallyPort">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Sally Port</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="DefC" value="DrawBridge">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Drawbridge</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <div class="item-content">
+                                                <div class="item-inner">
+                                                   <div class="item-title label">Number of Crosses</div>
+                                                   <div class="item-input">
+                                                      <input type="number" placeholder="0" name="NumCrossC" min="0">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <ul>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <!-- Checked by default -->
+                                                   <input type="radio" name="Cfail" value="Fail not stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Failed,<br/>Not Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <!-- Another radio input -->
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Cfail" value="Stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Cfail" value="success" checked>
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Success<br/>OR no<br/>Attempt</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+
+                                          </ul>
+                                          <br/>
+                                          <li>
+                                             <div class="item-input">
+                                                <div class="item-title label">Speed (1-5)</div>
+                                                <div id="SpeedC"></div>
+                                                <br/>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li class="accordion-item">
+                                 <a href="#" class="item-content item-link">
+                                    <div class="item-inner">
+                                       <div class="item-title"><u>Category D</u></div>
+                                    </div>
+                                 </a>
+                                 <div class="accordion-item-content">
+                                    <div class="list-block inset">
+                                       <ul>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="DefD" value="Rough Terrain">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Rough Terrain</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <label class="label-radio item-content">
+                                                <input type="radio" name="DefD" value="Rock Wall">
+                                                <div class="item-inner">
+                                                   <div class="item-title">Rock Wall</div>
+                                                </div>
+                                             </label>
+                                          </li>
+                                          <li>
+                                             <div class="item-content">
+                                                <div class="item-inner">
+                                                   <div class="item-title label">Number of Crosses</div>
+                                                   <div class="item-input">
+                                                      <input type="number" placeholder="0" name="NumCrossD" min="0">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <ul>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <!-- Checked by default -->
+                                                   <input type="radio" name="Dfail" value="Fail not stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Failed,<br/>Not Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <!-- Another radio input -->
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Dfail" value="Stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Dfail" value="success" checked>
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Success<br/>OR no<br/>Attempt</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+
+                                          </ul>
+                                          <br/>
+                                          <li>
+                                             <div class="item-input">
+                                                <div class="item-title label">Speed (1-5)</div>
+                                                <div id="SpeedD"></div>
+                                                <br/>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </li>
+
+                              <li class="accordion-item">
+                                 <a href="#" class="item-content item-link">
+                                    <div class="item-inner">
+                                       <div class="item-title"><u>Low Bar</u></div>
+                                    </div>
+                                 </a>
+                                 <div class="accordion-item-content">
+                                    <div class="list-block inset">
+                                       <ul>
+                                          <li>
+                                             <div class="item-content">
+                                                <div class="item-inner">
+                                                   <div class="item-title label">Number of Crosses</div>
+                                                   <div class="item-input">
+                                                      <input type="number" placeholder="0" name="NumCrossE" min="0">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <ul>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <!-- Checked by default -->
+                                                   <input type="radio" name="Efail" value="Fail not stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Failed,<br/>Not Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <!-- Another radio input -->
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Efail" value="Stuck">
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Stuck</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+                                             <li>
+                                                <label class="label-radio item-content">
+                                                   <input type="radio" name="Dfail" value="success" checked>
+                                                   <div class="item-inner">
+                                                      <div class="item-title">Success<br/>OR no<br/>Attempt</div>
+                                                   </div>
+                                                </label>
+                                             </li>
+
+                                          </ul>
+                                          <br/>
+                                          <li>
+                                             <div class="item-input">
+                                                <div class="item-title label">Speed (1-5)</div>
+                                                <div id="SpeedE"></div>
+                                                <br/>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </li>
+
+                           </ul>
+                        </div>
+
+                        <!-- TELEOP SHOOTING -->
+                        <div class="content-block-title">TELEOP - SHOOTING</div>
+                        <div class="list-block">
+                           <ul>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Successful<br/>High Shots</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="NumHigh" min="0">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Missed<br/>High Shots</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="NumHighMissed" min="0">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Successful<br>/Low Shots</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="NumLow" min="0">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Missed<br/>Low Shots</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="NumLowMissed" min="0">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                           </ul>
+
+                        </div>
+                        <div class="content-block-title">ENDGAME</div>
+                        <!-- CASTLE CHALLENGING -->
+                        <div class="list-block">
+                           <ul>
+                              <li>
+                                 <label class="label-radio item-content">
+                                    <!-- Checked by default -->
+                                    <input type="radio" name="Castle" value="Scale">
+                                    <div class="item-inner">
+                                       <div class="item-title">Scale</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <label class="label-radio item-content">
+                                    <input type="radio" name="Castle" value="Challenged">
+                                    <div class="item-inner">
+                                       <div class="item-title">Challenged</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <label class="label-radio item-content">
+                                    <input type="radio" name="Castle" value="Neither">
+                                    <div class="item-inner">
+                                       <div class="item-title" checked="checked">Neither</div>
+                                    </div>
+                                 </label>
+                              </li>
+                           </ul>
+                        </div>
+
+                        <div class="content-block-title">MISCELLANEOUS / RATINGS</div>
+                        <!-- CASTLE CHALLENGING -->
+                        <!-- This list is doubly nested. Just trust me. -->
+                        <div class="list-block">
+                           <ul>
+
+                              <br/>
+                              <br/>
+                              <li>
+                                 <div class="item-input">
+                                    <div class="item-title label">&nbsp&nbsp&nbspIntake<br/>&nbsp&nbsp&nbspSpeed</div>
+                                    <div id="IntakeSpeed"></div>
+                                    <br/>
+                                 </div>
+                              </li>
+                              <hr/>
+                              <br/>
+                              <li>
+                                 <div class="item-input">
+                                    <div class="item-title label">&nbsp&nbsp&nbspManeuverability</div>
+                                    <div id="Maneuverability"></div>
+                                    <br/>
+                                 </div>
+                              </li>
+                              <hr/>
+                              <br/>
+                              <li>
+                                 <div class="item-input">
+                                    <div class="item-title label">&nbsp&nbsp&nbspPurpose</div>
+                                    <div id="Purpose"></div>
+                                    <br/>
+                                 </div>
+                              </li>
+                              <hr/>
+                              <br/>
+                              <li>
+                                 <div class="item-input">
+                                    <div class="item-title label">&nbsp&nbsp&nbspAggression (1-5)</div>
+                                    <div id="Aggression"></div>
+                                    <br/>
+                                 </div>
+                              </li>
+                              <hr/>
+                              <br/>
+                              <li>
+                                 <div class="item-input">
+                                    <div class="item-title label">&nbsp&nbsp&nbspDefense</div>
+                                    <div id="Defense"></div>
+                                    <br/>
+                                 </div>
+                              </li>
+                              <br/>
+
+                           </ul>
+                        </div>
+
+                        <div class="list-block">
+                           <!-- Text inputs -->
+                           <ul>
+                              <li>
+                                 <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="BreakDown" value="1">
+                                    <div class="item-media">
+                                       <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title" value="false">Breakdown/Disabled</div>
+                                    </div>
+                                 </label>
+                              </li>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Secret<br/>Passage<br/>Fouls</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="SecretPassageFouls" min="0">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Outerworks<br/>Fouls</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="ObstructionFouls" min="0">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li>
+                                 <div class="item-content">
+                                    <div class="item-inner">
+                                       <div class="item-title label">Other<br/>Fouls</div>
+                                       <div class="item-input">
+                                          <input type="number" placeholder="0" name="OtherFouls" min="0">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                           </ul>
+                        </div>
+                        <!-- SUBMIT -->
+                        <div class="list-block">
+                           <!-- run sendToGoogleForm on form submit -->
+                           <ul>
+                              <li>
+                                 <input type="submit" value="Submit" class="button button-big button-green">
+                              </li>
+                           </ul>
+                        </div>
+
+                        <!-- Bottom Toolbar-->
+
+                     </div>
+                  </div>
+               </form>
+               <!-- Path to Framework7 Library JS-->
+               <script type="text/javascript" src="js/framework7.min.js"></script>
+               <!-- Path to your app js-->
+               <script type="text/javascript" src="js/my-app.js"></script>
             </div>
          </div>
-         <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-         <div class="pages navbar-through toolbar-through">
-            <!-- Page, data-page contains page name-->
-            <div data-page="index" class="page">
-               <!-- Scrollable page content-->
-               <div class="page-content">
-                  <form action="https://script.google.com/a/macros/francisparker.org/s/AKfycbwSB9g43MbQsRBKZSc-eG2aypRS9gAPedZXX1t5qQhyU7vjJYU/exec" method="POST" id="form" name="form" onsubmit="return validateForm()">
-
-                     <div class="content-block-title">PRE MATCH</div>
-
-
-
-                     <div class="list-block">
-                        <!-- form start -->
-                        <!-- PREMATCH -->
-                        <ul>
-                           <!-- Text inputs -->
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Team Number</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="TeamNumber" min="1" >
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Match Number</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="MatchNumber" min="1">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="NoShow" value="1">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title" value="false">No Show?</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="BreakDown" value="1">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title" value="false">Breakdown / Disabled</div>
-                                 </div>
-                              </label>
-                           </li>
-                        </ul>
-                     </div>
-
-                     <div class="content-block-title">Auto</div>
-                     <div class="list-block">
-                        <ul>
-                           <li class="accordion-item">
-                              <a href="#" class="item-content item-link">
-                                 <div class="item-inner">
-                                    <div class="item-title"><u>Lined up on...</u></div>
-                                 </div>
-                              </a>
-                              <div class="accordion-item-content">
-                                 <div class="list-block inset">
-                                    <ul>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="AutoDef" value="A">
-                                             <div class="item-inner">
-                                                <div class="item-title">Category A</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="AutoDef" value="B">
-                                             <div class="item-inner">
-                                                <div class="item-title">Category B</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="AutoDef" value="C">
-                                             <div class="item-inner">
-                                                <div class="item-title">Category C</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="AutoDef" value="D">
-                                             <div class="item-inner">
-                                                <div class="item-title">Category D</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="AutoDef" value="E">
-                                             <div class="item-inner">
-                                                <div class="item-title">Category E</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="AutoDef" value="Spy">
-                                             <div class="item-inner">
-                                                <div class="item-title">Spy</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="AutoDef" value="NULL" checked="checked">
-                                             <div class="item-inner">
-                                                <div class="item-title">None</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <!-- Checked by default -->
-                                 <input type="checkbox" name="Autoreach" value="1">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Reached a defense</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <!-- Another chekbox item -->
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutodefCross" value="1">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Crossed a Defense</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoHigh" value="success" onChange="highExpand()" id="AutoHigh">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Attempt High Shot</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content" type="hidden" id="HighFail">
-                                 <input type="checkbox" name="AutoHigh">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Fail?</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content">
-                                 <input type="checkbox" name="AutoLow" value="1" id="AutoHigh">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Attempt Low Shot</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-checkbox item-content" type="hidden" id="LowFail">
-                                 <input type="checkbox" name="AutoLow">
-                                 <div class="item-media">
-                                    <i class="icon icon-form-checkbox"></i>
-                                 </div>
-                                 <div class="item-inner">
-                                    <div class="item-title">Fail?</div>
-                                 </div>
-                              </label>
-                           </li>
-                        </ul>
-                     </div>
-
-                     <div class="content-block-title">Teleop</div>
-                     <div class="list-block">
-                        <!-- DEFENSES -->
-                        <ul>
-                           <li class="accordion-item">
-                              <a href="#" class="item-content item-link">
-                                 <div class="item-inner">
-                                    <div class="item-title"><u>Category A</u></div>
-                                 </div>
-                              </a>
-                              <div class="accordion-item-content">
-                                 <div class="list-block inset">
-                                    <ul>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="DefA" value="Portcullis">
-                                             <div class="item-inner">
-                                                <div class="item-title">Portcullis</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="DefA" value="CDF">
-                                             <div class="item-inner">
-                                                <div class="item-title">Cheval de FRIES</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <div class="item-content">
-                                             <div class="item-inner">
-                                                <div class="item-title label">Number of Crosses</div>
-                                                <div class="item-input">
-                                                   <input type="number" placeholder="0" name="NumCrossA" min="0">
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </li>
-                                       <br/>
-                                       <ul>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <!-- Checked by default -->
-                                                <input type="radio" name="Afail" value="Fail no Stuck">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Failed but not Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <!-- Another radio input -->
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Afail" value="Stuck">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Got Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Afail" value="!attempt" checked="checked">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Did not Fail/Did not Attempt</div>
-                                                </div>
-                                             </label>
-                                          </li>
-
-                                       </ul>
-                                       <br/>
-                                       <li>
-                                          <div class="item-input">
-                                             <div class="item-title label">Speed (1-5)</div>
-                                             <div id="SpeedA"></div>
-                                             <br/>
-                                          </div>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </li>
-
-                           <!-- CAT B -->
-                           <li class="accordion-item">
-                              <a href="#" class="item-content item-link">
-                                 <div class="item-inner">
-                                    <div class="item-title"><u>Category B</u></div>
-                                 </div>
-                              </a>
-                              <div class="accordion-item-content">
-                                 <div class="list-block inset">
-                                    <ul>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="DefB" value="Ramparts">
-                                             <div class="item-inner">
-                                                <div class="item-title">Ramparts</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="DefB" value="Moat">
-                                             <div class="item-inner">
-                                                <div class="item-title">Moat</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <div class="item-content">
-                                             <div class="item-inner">
-                                                <div class="item-title label">Number of Crosses</div>
-                                                <div class="item-input">
-                                                   <input type="number" placeholder="0" name="NumCrossB" min="0">
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </li>
-                                       <ul>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <!-- Checked by default -->
-                                                <input type="radio" name="Bfail" value="Fail no Stuck">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Failed but not Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <!-- Another radio input -->
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Bfail" value="StucK">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Got Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Bfail" value="!attempt" checked="checked">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Did not Fail/Did not Attempt</div>
-                                                </div>
-                                             </label>
-                                          </li>
-
-                                       </ul>
-                                       <br/>
-                                       <li>
-                                          <div class="item-input">
-                                             <div class="item-title label">Speed (1-5)</div>
-                                             <div id="SpeedB"></div>
-                                             <br/>
-                                          </div>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </li>
-
-                           <li class="accordion-item">
-                              <a href="#" class="item-content item-link">
-                                 <div class="item-inner">
-                                    <div class="item-title"><u>Category C</u></div>
-                                 </div>
-                              </a>
-                              <div class="accordion-item-content">
-                                 <div class="list-block inset">
-                                    <ul>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="DefC" value="SallyPort">
-                                             <div class="item-inner">
-                                                <div class="item-title">Sally Port</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="DefC" value="DrawBridge">
-                                             <div class="item-inner">
-                                                <div class="item-title">Drawbridge</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <div class="item-content">
-                                             <div class="item-inner">
-                                                <div class="item-title label">Number of Crosses</div>
-                                                <div class="item-input">
-                                                   <input type="number" placeholder="0" name="NumCrossC" min="0">
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </li>
-                                       <ul>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <!-- Checked by default -->
-                                                <input type="radio" name="Cfail" value="Fail no Stuck">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Failed but not Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <!-- Another radio input -->
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Cfail" value="StucK">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Got Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Cfail" value="!attempt" checked="checked">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Did not Fail/Did not Attempt</div>
-                                                </div>
-                                             </label>
-                                          </li>
-
-                                       </ul>
-                                       <br/>
-                                       <li>
-                                          <div class="item-input">
-                                             <div class="item-title label">Speed (1-5)</div>
-                                             <div id="SpeedC"></div>
-                                             <br/>
-                                          </div>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </li>
-                           <li class="accordion-item">
-                              <a href="#" class="item-content item-link">
-                                 <div class="item-inner">
-                                    <div class="item-title"><u>Category D</u></div>
-                                 </div>
-                              </a>
-                              <div class="accordion-item-content">
-                                 <div class="list-block inset">
-                                    <ul>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="DefD" value="Rough Terrain">
-                                             <div class="item-inner">
-                                                <div class="item-title">Rough Terrain</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <label class="label-radio item-content">
-                                             <input type="radio" name="DefD" value="Rock Wall">
-                                             <div class="item-inner">
-                                                <div class="item-title">Rock Wall</div>
-                                             </div>
-                                          </label>
-                                       </li>
-                                       <li>
-                                          <div class="item-content">
-                                             <div class="item-inner">
-                                                <div class="item-title label">Number of Crosses</div>
-                                                <div class="item-input">
-                                                   <input type="number" placeholder="0" name="NumCrossD" min="0">
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </li>
-                                       <ul>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <!-- Checked by default -->
-                                                <input type="radio" name="Dfail" value="Fail no Stuck">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Failed but not Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <!-- Another radio input -->
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Dfail" value="StucK">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Got Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Dfail" value="!attempt" checked="checked">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Did not Fail/Did not Attempt</div>
-                                                </div>
-                                             </label>
-                                          </li>
-
-                                       </ul>
-                                       <br/>
-                                       <li>
-                                          <div class="item-input">
-                                             <div class="item-title label">Speed (1-5)</div>
-                                             <div id="SpeedD"></div>
-                                             <br/>
-                                          </div>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </li>
-
-                           <li class="accordion-item">
-                              <a href="#" class="item-content item-link">
-                                 <div class="item-inner">
-                                    <div class="item-title"><u>Low Bar</u></div>
-                                 </div>
-                              </a>
-                              <div class="accordion-item-content">
-                                 <div class="list-block inset">
-                                    <ul>
-                                       <li>
-                                          <div class="item-content">
-                                             <div class="item-inner">
-                                                <div class="item-title label">Number of Crosses</div>
-                                                <div class="item-input">
-                                                   <input type="number" placeholder="0" name="NumCrossE" min="0">
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </li>
-                                       <ul>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <!-- Checked by default -->
-                                                <input type="radio" name="Efail" value="Fail no Stuck">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Failed but not Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <!-- Another radio input -->
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Efail" value="StucK">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Got Stuck</div>
-                                                </div>
-                                             </label>
-                                          </li>
-                                          <li>
-                                             <label class="label-radio item-content">
-                                                <input type="radio" name="Efail" value="!attempt" checked="checked">
-                                                <div class="item-inner">
-                                                   <div class="item-title">Did not Fail/Did not Attempt</div>
-                                                </div>
-                                             </label>
-                                          </li>
-
-                                       </ul>
-                                       <br/>
-                                       <li>
-                                          <div class="item-input">
-                                             <div class="item-title label">Speed (1-5)</div>
-                                             <div id="SpeedE"></div>
-                                             <br/>
-                                          </div>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </li>
-
-                        </ul>
-                     </div>
-
-                     <!-- TELEOP SHOOTING -->
-                     <div class="content-block-title">TELEOP - SHOOTING</div>
-                     <div class="list-block">
-                        <ul>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Number of High Shots</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="NumHigh" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Number of High Shots Missed</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="NumHighMissed" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Number of Low Shots</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="NumLow" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Number of Low Shots missed</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="NumLowMissed" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                        </ul>
-
-                     </div>
-                     <div class="content-block-title">ENDGAME</div>
-                     <!-- CASTLE CHALLENGING -->
-                     <div class="list-block">
-                        <ul>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <!-- Checked by default -->
-                                 <input type="radio" name="Castle" value="Scale">
-                                 <div class="item-inner">
-                                    <div class="item-title">Scale</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="Castle" value="Challenged">
-                                 <div class="item-inner">
-                                    <div class="item-title">Challenged</div>
-                                 </div>
-                              </label>
-                           </li>
-                           <li>
-                              <label class="label-radio item-content">
-                                 <input type="radio" name="Castle" value="Neither">
-                                 <div class="item-inner">
-                                    <div class="item-title" checked="checked">Neither</div>
-                                 </div>
-                              </label>
-                           </li>
-                        </ul>
-                     </div>
-
-                     <div class="content-block-title">MISCELLANEOUS / RATINGS</div>
-                     <!-- CASTLE CHALLENGING -->
-                     <!-- This list is doubly nested. Just trust me. -->
-                     <div class="list-block">
-                        <ul>
-                           <li>
-                              <div class="list-block inset">
-                                 <ul>
-                                    <br/>
-                                    <br/>
-                                    <li>
-                                       <div class="item-input">
-                                          <div class="item-title label">Intake Speed (1-5)</div>
-                                          <div id="IntakeSpeed"></div>
-                                          <br/>
-                                       </div>
-                                    </li>
-                                    <hr/>
-                                    <br/>
-                                    <li>
-                                       <div class="item-input">
-                                          <div class="item-title label">Robot Maneuverability (1-5)</div>
-                                          <div id="Maneuverability"></div>
-                                          <br/>
-                                       </div>
-                                    </li>
-                                    <hr/>
-                                    <br/>
-                                    <li>
-                                       <div class="item-input">
-                                          <div class="item-title label">Drives with Purpose (1-5)</div>
-                                          <div id="Purpose"></div>
-                                       </br>
-                                    </div>
-                                 </li>
-                                 <hr/>
-                                 <br/>
-                                 <li>
-                                    <div class="item-input">
-                                       <div class="item-title label">Driver Aggression (1-5)</div>
-                                       <div id="Aggression"></div>
-                                       <br/>
-                                    </div>
-                                 </li>
-                                 <hr/>
-                                 <br/>
-                                 <li>
-                                    <div class="item-input">
-                                       <div class="item-title label">Defense (1-5)</div>
-                                       <div id="Defense"></div>
-                                       <br/>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
-
-                        </ul>
-                     </div>
-
-                     <div class="list-block">
-                        <!-- Text inputs -->
-                        <ul>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Secret Passage Fouls</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="SecretPassageFouls" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Outerworks Fouls</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="ObstructionFouls" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-title label">Other Fouls</div>
-                                    <div class="item-input">
-                                       <input type="number" placeholder="0" name="OtherFouls" min="0">
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                        </ul>
-                     </div>
-                     <!-- SUBMIT -->
-                     <div class="list-block">
-                        <!-- run sendToGoogleForm on form submit -->
-                        <ul>
-                           <li>
-                              <input type="submit" value="Submit" class="button button-big button-green">
-                           </li>
-                        </ul>
-                     </div>
-
-                     <!-- Bottom Toolbar-->
-
-                  </div>
-               </div>
-            </form>
-            <!-- Path to Framework7 Library JS-->
-            <script type="text/javascript" src="js/framework7.min.js"></script>
-            <!-- Path to your app js-->
-            <script type="text/javascript" src="js/my-app.js"></script>
-         </div>
       </div>
-   </div>
-</body>
-<script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="includes/rateyo/jquery.rateyo.min.js"></script>
-<script type="text/javascript">
+   </body>
+   <script type="text/javascript" src="includes/jquery-1.12.0.min.js"></script>
+   <script type="text/javascript" src="includes/rateyo/jquery.rateyo.min.js"></script>
+   <script type="text/javascript">
 //star stuff
 var StarSelectors = ["SpeedA", "SpeedB", "SpeedC", "SpeedD", "SpeedE", "IntakeSpeed", "Maneuverability", "Aggression","Purpose","Defense"];
 
