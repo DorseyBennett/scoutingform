@@ -5,7 +5,7 @@
 
    <style type="text/css">
    div {
-      text-overflow: initial;
+      overflow:visible;
    }
    </style>
 
@@ -26,15 +26,32 @@
    <link rel="stylesheet" href="css/my-app.css">
 
    <script>
+   function getRadioValue(name) {
+      var radios = document.getElementsByName(name);
+      for(k = 0; k < radios.length; k++) {
+         if(radios[k].checked) {
+            return radios[k].value;
+         }
+      }
+      return null;
+   }
+   </script>
+
+   <script>
    
    function validateForm() {
+      alert(getRadioValue("DefC"));
       //First, check for noshow
       var NoShow = document.getElementsByName("NoShow")[0];
-      if(NoShow.value =="1") {
+      if(NoShow.checked) {
          var inputs = document.getElementsByTagName("input");
          for( i = 0; i < inputs.length; i++) {
             var value = inputs[i].value;
             var type = inputs[i].type;
+            if((inputs[i].name ==="TeamNumber" || inputs[i].name ==="MatchNumber") && (value=="0" || value == null || value == "")) {
+               alert("Please enter " + inputs[i].name);
+               return false;
+            }
             document.getElementsByTagName("input")[i].value = 0;
             if(type=="checkbox") 
                document.getElementsByTagName("input")[i].checked = true;
@@ -56,31 +73,52 @@
          }
 
          if(type === "radio") {
-            var invalid=true;
-            for(j = 0; j < inputs.length; j++) {
-               if(inputs[j].checked) {
-                  invalid=false;
-               }
-            }
-            if(invalid) {
+
+            var value = getRadioValue(toConfirm[i]);
+            alert(value);
+            if(value == null || value =="") {
                alert("Please enter " + toConfirm[i]);
                return false;
             }
          }
       }
-         //append 0s to all relevant data
-         //freaking radio buttons
-         //NOTE: the logic to include radio buttons for this seems really convoluted so I am just going to make those NULL, aight?
-         var inputs = document.getElementsByTagName("input");
-         for( i = 0; i < inputs.length; i++) {
-            var value = inputs[i].value;
-            var type = inputs[i].type;
-            if(type ==="number" && (value == null || value == "")) {
-               //I don't know why you have to do it this way. You just do.
-               document.getElementsByTagName("input")[i].value = 0;
-               continue;
-            }
-            if(type ==="checkbox" && inputs[i].checked == false && value == "1") {
+
+      //Force scout to input radio buttons if there is a value for these
+      //Otherwise zero out dependencies
+      var dependencies = [
+      ["NumCrossA", "SpeedA"],
+      ["NumCrossB", "SpeedB"],
+      ["NumCrossC", "SpeedC"],
+      ["NumCrossD", "SpeedD"],
+      ["NumCrossE", "SpeedE"]
+      ];
+
+      for(i = 0; i < dependencies.length; i++) {
+         var num = document.getElementsByName(dependencies[i][0]);
+         var value = num[0].value;
+         if(value=="0" || value == null || value == "") {
+            alert(value);
+            document.getElementsByName(dependencies[i][1])[0].value=0;
+            continue;
+         } else if(getRadioValue(dependencies[i][1]) == null) {
+            alert("Please fill out info for " + dependencies[i][1]);
+            return false;
+         }
+      }
+
+      //append 0s to all relevant data
+      //freaking radio buttons
+      //NOTE: the logic to include radio buttons for this seems really convoluted so I am just going to make those NULL, aight?
+      var inputs = document.getElementsByTagName("input");
+      for( i = 0; i < inputs.length; i++) {
+         var value = inputs[i].value;
+         var type = inputs[i].type;
+         if(type ==="number" && (value == null || value == "")) {
+            //I don't know why you have to do it this way. You just do.
+            document.getElementsByTagName("input")[i].value = 0;
+            continue;
+         }
+         if(type ==="checkbox" && inputs[i].checked == false && value == "1") {
                //wow, this is incredibly hacky
                document.getElementsByTagName("input")[i].value = 0;
                document.getElementsByTagName("input")[i].checked = true;
@@ -223,7 +261,7 @@
                                           </li>
                                           <li>
                                              <label class="label-radio item-content">
-                                                <input type="radio" name="AutoDef" value="None" checked="checked">
+                                                <input type="radio" name="AutoDef" value="None" checked>
                                                 <div class="item-inner">
                                                    <div class="item-title">None</div>
                                                 </div>
@@ -338,7 +376,7 @@
                                                 <div class="item-inner">
                                                    <div class="item-title label">Number of<br/>Crosses</div>
                                                    <div class="item-input">
-                                                      <input type="number" placeholder="0" name="NumCrossA" min="0">
+                                                      <input type="number" placeholder="0" name="NumCrossA" min="0" id="NumCrossA">
                                                    </div>
                                                 </div>
                                              </div>
@@ -372,12 +410,42 @@
                                                 </label>
                                              </li>
                                           </ul>
-                                          <br/>
                                           <li>
-                                             <div class="item-input">
-                                                <div class="item-title label">Speed (1-5)</div>
-                                                <div id="SpeedA"></div>
-                                                <br/>
+                                             <div class="item-title label">&nbsp;&nbsp;&nbsp;Time (s)</div>
+                                             <div class="row no-gutter">
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedA" value="3">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&lt;1</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedA" value="5">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">5</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedA" value="7">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">7</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedA" value="10">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&gt;10</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+
                                              </div>
                                           </li>
                                        </ul>
@@ -416,7 +484,7 @@
                                                 <div class="item-inner">
                                                    <div class="item-title label">Number of Crosses</div>
                                                    <div class="item-input">
-                                                      <input type="number" placeholder="0" name="NumCrossB" min="0">
+                                                      <input type="number" placeholder="0" name="NumCrossB" min="0" id="NumCrossB">
                                                    </div>
                                                 </div>
                                              </div>
@@ -448,14 +516,42 @@
                                                    </div>
                                                 </label>
                                              </li>
-
                                           </ul>
-                                          <br/>
                                           <li>
-                                             <div class="item-input">
-                                                <div class="item-title label">Speed (1-5)</div>
-                                                <div id="SpeedB"></div>
-                                                <br/>
+                                             <div class="item-title label">&nbsp;&nbsp;&nbsp;Time (s)</div>
+                                             <div class="row no-gutter">
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedB" value="3">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&lt;1</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedB" value="5">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">5</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedB" value="7">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">7</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedB" value="10">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&gt;10</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
                                              </div>
                                           </li>
                                        </ul>
@@ -493,7 +589,7 @@
                                                 <div class="item-inner">
                                                    <div class="item-title label">Number of Crosses</div>
                                                    <div class="item-input">
-                                                      <input type="number" placeholder="0" name="NumCrossC" min="0">
+                                                      <input type="number" placeholder="0" name="NumCrossC" min="0" id="NumCrossC">
                                                    </div>
                                                 </div>
                                              </div>
@@ -527,12 +623,41 @@
                                              </li>
 
                                           </ul>
-                                          <br/>
                                           <li>
-                                             <div class="item-input">
-                                                <div class="item-title label">Speed (1-5)</div>
-                                                <div id="SpeedC"></div>
-                                                <br/>
+                                             <div class="item-title label">&nbsp;&nbsp;&nbsp;Time (s)</div>
+                                             <div class="row no-gutter">
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedC" value="3">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&lt;1</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedC" value="5">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">5</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedC" value="7">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">7</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedC" value="10">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&gt;10</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
                                              </div>
                                           </li>
                                        </ul>
@@ -569,7 +694,7 @@
                                                 <div class="item-inner">
                                                    <div class="item-title label">Number of Crosses</div>
                                                    <div class="item-input">
-                                                      <input type="number" placeholder="0" name="NumCrossD" min="0">
+                                                      <input type="number" placeholder="0" name="NumCrossD" min="0" id="NumCrossD">
                                                    </div>
                                                 </div>
                                              </div>
@@ -603,12 +728,41 @@
                                              </li>
 
                                           </ul>
-                                          <br/>
                                           <li>
-                                             <div class="item-input">
-                                                <div class="item-title label">Speed (1-5)</div>
-                                                <div id="SpeedD"></div>
-                                                <br/>
+                                             <div class="item-title label">&nbsp;&nbsp;&nbsp;Time (s)</div>
+                                             <div class="row no-gutter">
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedD" value="3">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&lt;1</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedD" value="5">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">5</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedD" value="7">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">7</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedD" value="10">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&gt;10</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
                                              </div>
                                           </li>
                                        </ul>
@@ -630,7 +784,7 @@
                                                 <div class="item-inner">
                                                    <div class="item-title label">Number of Crosses</div>
                                                    <div class="item-input">
-                                                      <input type="number" placeholder="0" name="NumCrossE" min="0">
+                                                      <input type="number" placeholder="0" name="NumCrossE" min="0" id="NumCrossE">
                                                    </div>
                                                 </div>
                                              </div>
@@ -664,12 +818,41 @@
                                              </li>
 
                                           </ul>
-                                          <br/>
                                           <li>
-                                             <div class="item-input">
-                                                <div class="item-title label">Speed (1-5)</div>
-                                                <div id="SpeedE"></div>
-                                                <br/>
+                                             <div class="item-title label">&nbsp;&nbsp;&nbsp;Time (s)</div>
+                                             <div class="row no-gutter">
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedE" value="3">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&lt;1</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedE" value="5">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">5</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedE" value="7">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">7</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
+                                                <div class="col-25">
+                                                   <label class="label-radio item-content">
+                                                      <input type="radio" name="SpeedE" value="10">
+                                                      <div class="item-inner">
+                                                         <div class="item-title">&gt;10</div>
+                                                      </div>
+                                                   </label>
+                                                </div>
                                              </div>
                                           </li>
                                        </ul>
@@ -707,7 +890,7 @@
                               <li>
                                  <div class="item-content">
                                     <div class="item-inner">
-                                       <div class="item-title label">Successful<br>/Low Shots</div>
+                                       <div class="item-title label">Successful<br/>Low Shots</div>
                                        <div class="item-input">
                                           <input type="number" placeholder="0" name="NumLow" min="0">
                                        </div>
@@ -769,7 +952,7 @@
                               <br/>
                               <li>
                                  <div class="item-input">
-                                    <div class="item-title label">&nbsp&nbsp&nbspIntake<br/>&nbsp&nbsp&nbspSpeed</div>
+                                    <div class="item-title label">&nbsp;&nbsp;&nbsp;Intake<br/>&nbsp;&nbsp;&nbsp;Speed</div>
                                     <div id="IntakeSpeed"></div>
                                     <br/>
                                  </div>
@@ -778,7 +961,7 @@
                               <br/>
                               <li>
                                  <div class="item-input">
-                                    <div class="item-title label">&nbsp&nbsp&nbspManeuverability</div>
+                                    <div class="item-title label">&nbsp;&nbsp;&nbsp;Maneuverability</div>
                                     <div id="Maneuverability"></div>
                                     <br/>
                                  </div>
@@ -787,7 +970,7 @@
                               <br/>
                               <li>
                                  <div class="item-input">
-                                    <div class="item-title label">&nbsp&nbsp&nbspPurpose</div>
+                                    <div class="item-title label">&nbsp;&nbsp;&nbsp;Purpose</div>
                                     <div id="Purpose"></div>
                                     <br/>
                                  </div>
@@ -796,7 +979,7 @@
                               <br/>
                               <li>
                                  <div class="item-input">
-                                    <div class="item-title label">&nbsp&nbsp&nbspAggression (1-5)</div>
+                                    <div class="item-title label">&nbsp;&nbsp;&nbsp;Aggression</div>
                                     <div id="Aggression"></div>
                                     <br/>
                                  </div>
@@ -805,7 +988,7 @@
                               <br/>
                               <li>
                                  <div class="item-input">
-                                    <div class="item-title label">&nbsp&nbsp&nbspDefense</div>
+                                    <div class="item-title label">&nbsp;&nbsp;&nbsp;Defense</div>
                                     <div id="Defense"></div>
                                     <br/>
                                  </div>
@@ -888,7 +1071,7 @@
    <script type="text/javascript" src="includes/rateyo/jquery.rateyo.min.js"></script>
    <script type="text/javascript">
 //star stuff
-var StarSelectors = ["SpeedA", "SpeedB", "SpeedC", "SpeedD", "SpeedE", "IntakeSpeed", "Maneuverability", "Aggression","Purpose","Defense"];
+var StarSelectors = ["IntakeSpeed", "Maneuverability", "Aggression","Purpose","Defense"];
 
 
 
