@@ -50,6 +50,9 @@
             for (i = 0; i < inputs.length; i++) {
                 var value = inputs[i].value;
                 var type = inputs[i].type;
+                if(inputs[i].name == "NoShow") {
+                  continue;
+                }
                 if (inputs[i].name == "TeamNumber" || inputs[i].name == "MatchNumber") {
                     if (value == "0" || value == null || value == "") {
                         alert("Please enter " + inputs[i].name);
